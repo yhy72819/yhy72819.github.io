@@ -5,6 +5,7 @@ icon: house
 title: 电脑新手
 heroImage: https://theme-hope-assets.vuejs.press/logo.svg
 heroText: yhy72819
+bgImage: /photos/photo1.png
 heroFullScreen: true
 tagline: 记录编程新人的学习过程
 projects:
