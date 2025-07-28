@@ -10,7 +10,7 @@ heroFullScreen: true
 tagline: 记录编程新人的学习过程
 projects:
   - icon: folder-open
-    name: 项目名称
+    name: 项目名
     desc: 项目详细描述
     link: https://你的项目链接
 
