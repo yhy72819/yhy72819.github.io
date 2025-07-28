@@ -3,7 +3,7 @@ home: true
 layout: Blog
 icon: house
 title: 电脑新手
-heroImage: /photos/photo2.png
+heroImage: /photos/logo.png
 heroText: yhy72819
 bgImage: /photos/photo1.png
 heroFullScreen: true
