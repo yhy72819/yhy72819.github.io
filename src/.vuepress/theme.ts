@@ -34,7 +34,7 @@ export default hopeTheme({
     avatar: "/photos/avatar.jpg",
     intro: "/intro.html",
     medias: {
-      GitHub: "https://yhy72819.github.io",
+      GitHub: "https://github.com/yhy72819",
       Gmail: "https://yuanhuayun713@gmail.com",
       Wechat: "/wechat.jpg",
       VuePressThemeHope: {
