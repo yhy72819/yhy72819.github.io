@@ -21,6 +21,6 @@ export default navbar([
   {
     text: "标题",
     icon: "pen-to-square",
-    link: "/note.pdf",
+    link: "https://computergreenhand.com/note.pdf",
   },
 ]);
