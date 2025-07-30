@@ -19,8 +19,30 @@ export default navbar([
     ]
   },
   {
-    text: "标题",
+    text: "关于我",
+    icon: "home",
+    link: "###",
+    children:[
+      {
+        text: "过往经历",
+        icon: "pen-to-square",
+        link: "2",
+      },
+      {
+        text: "当前研究",
+        icon: "pen-to-square",
+        link: "3",
+      },
+      {
+        text: "未来展望",
+        icon: "pen-to-square",
+        link: "3",
+      }
+    ]
+  },
+  {
+    text: "推荐链接",
     icon: "pen-to-square",
-    link: "https://computergreenhand.com/note.pdf",
+    link: "4",
   },
 ]);
