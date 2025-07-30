@@ -21,6 +21,6 @@ export default navbar([
   {
     text: "标题",
     icon: "pen-to-square",
-    link: "1.png",
+    link: "/1.png",
   },
 ]);
