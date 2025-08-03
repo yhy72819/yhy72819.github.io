@@ -146,6 +146,7 @@ export default hopeTheme({
       comment: true,
       pageview: true,
       noCopyright: true,
+      reaction: true,
       dark: "auto",
     },
 
