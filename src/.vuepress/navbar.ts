@@ -19,7 +19,7 @@ export default navbar([
   },
   {
     text: "关于我",
-    icon: "home",
+    icon: "fa-solid fa-user",
     link: "###",
     children:[
       {
@@ -41,7 +41,7 @@ export default navbar([
   },
   {
     text: "推荐链接",
-    icon: "pen-to-square",
+    icon: "fa-solid fa-link",
     link: "4",
   },
 ]);

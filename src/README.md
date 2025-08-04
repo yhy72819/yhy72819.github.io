@@ -1,7 +1,7 @@
 ---
 home: true
 layout: Blog
-icon: house
+icon: "fa-solid fa-house-user"
 title: 电脑新手
 heroImage: /photos/logo.png
 heroText: yhy72819
