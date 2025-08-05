@@ -9,7 +9,7 @@ export default defineUserConfig({
   title: "电脑新手",
   description: "记录编程新人的学习过程",
   head: [
-    ['link', {rel: 'icon', href: '/icon/greenhand.ico'}]],
+    ['link', {rel: 'icon', href: '/assets/icon/greenhand.ico'}]],
   theme,
 
   // 和 PWA 一起启用
