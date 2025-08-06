@@ -13,7 +13,7 @@ export default hopeTheme({
 
   logo: "https://computergreenhand.com/photos/logo.png",
 
-  repo: "yhy72819/yhy72819",
+  repo: "yhy72819/yhy72819.github.io",
 
   docsDir: "src",
 
