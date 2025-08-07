@@ -1,14 +1,12 @@
 ---
-title:
+title: 静态网站搭建笔记
 icon: blog
 date: 2025-08-06 21:58:44
-author:
+author: yhy72819
 category:
-    - 你的分类1
-    - 你的分类2
+    - 教程
 tag:
-    - 你的标签1
-    - 你的标签2
+    - notebook
 isOriginal: true
 sticky: false
 star: false
