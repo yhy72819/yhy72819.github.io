@@ -1,5 +1,5 @@
 ---
-title: 静态网站搭建笔记
+title: 本网站文章搭建过程
 icon: blog
 date: 2025-08-06 21:58:44
 author: yhy72819

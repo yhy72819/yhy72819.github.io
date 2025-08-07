@@ -64,19 +64,31 @@ export default hopeTheme({
 
   // 此处开启了很多功能用于演示，你应仅保留用到的功能。
   markdown: {
-    align: true,
-    attrs: true,
-    codeTabs: true,
-    component: true,
-    demo: true,
     figure: true,
-    gfm: true,
     imgLazyload: true,
+    imgMark: true,
     imgSize: true,
-    include: true,
     mark: true,
-    plantuml: true,
+    codeTabs: true,
+    tabs: true,
+    math: true,
+    hint: true,
+    alert: true,
+    chartjs: false,
+    echarts: false,
+    mermaid: true,
+    vuePlayground: false,
+    sub: true,
     spoiler: true,
+    sup: true,
+    tasklist: true,
+    include: true,
+    attrs: false,
+    footnote: true,
+    align: true,
+    flowchart: false,
+    gfm: true,
+    preview: true,
     stylize: [
       {
         matcher: "Recommended",
@@ -90,50 +102,8 @@ export default hopeTheme({
         },
       },
     ],
-    sub: true,
-    sup: true,
-    tabs: true,
-    tasklist: true,
     vPre: true,
-
-    // 取消注释它们如果你需要 TeX 支持
-    // math: {
-    //   // 启用前安装 katex
-    //   type: "katex",
-    //   // 或者安装 mathjax-full
-    //   type: "mathjax",
-    // },
-
-    // 如果你需要幻灯片，安装 @vuepress/plugin-revealjs 并取消下方注释
-    // revealjs: {
-    //   plugins: ["highlight", "math", "search", "notes", "zoom"],
-    // },
-
-    // 在启用之前安装 chart.js
-    // chartjs: true,
-
-    // insert component easily
-
-    // 在启用之前安装 echarts
-    // echarts: true,
-
-    // 在启用之前安装 flowchart.ts
-    // flowchart: true,
-
-    // 在启用之前安装 mermaid
-    // mermaid: true,
-
-    // playground: {
-    //   presets: ["ts", "vue"],
-    // },
-
-    // 在启用之前安装 @vue/repl
-    // vuePlayground: true,
-
-    // 在启用之前安装 sandpack-vue3
-    // sandpack: true,
   },
-
   // 在这里配置主题提供的插件
   plugins: {
     blog: true,
