@@ -420,7 +420,7 @@ control+C停止运行
 
 ## 14.图标修改
 
-::: Preview 图标修改
+::: preview 图标修改
 
 vuepress系统支持如下三种图标：
 
