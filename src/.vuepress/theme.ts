@@ -27,7 +27,7 @@ export default hopeTheme({
   footer: "默认页脚",
   displayFooter: true,
 
-  // 博客相关
+  // 博客相ß关
   blog: {
     name: "yhy72819",
     description: "一个学习编程的菜鸟",
@@ -51,13 +51,17 @@ export default hopeTheme({
         hint: "Password: 1234",
         password: "1234",
       },
+      "/website-notebook/website-writting-note.html": {
+        hint: "",
+        password: "12345678a",
+      },
     },
   },
 
   // 多语言配置
   metaLocales: {
     editLink: "在 GitHub 上编辑此页",
-  },
+  }, 
 
   // 如果想要实时查看任何改变，启用它。注: 这对更新性能有很大负面影响
   // hotReload: true,

@@ -171,3 +171,300 @@ public class HelloWorld {
 
 :::
 
+## 7. 数学公式
+
+### 7.1 基础演示
+
+::: preview 
+
+$$xxx$$ 
+$$
+xxx
+$$
+可以通过在`$`字符之前使用`/`或在`$`字符之后添加空格来完成转义：
+
+$a=1$是一个TeX方程，而\$a=1$不是
+
+> **注意**：单个`$`所表示的方程可以用于混在句子之中，但`$$`所表示的方程只能单独一行
+
+### 7.2 行内语法
+
+Euler's identity $e^{i\pi}+1=0$ is a beautiful formula in $\mathbb{R}^2$
+
+> **注意**：\mathbb是一个整体，使其用大括号包围的数字或字母表现镂空的效果
+
+### 7.3 显示语法
+
+$$
+\frac {\partial^r} {\partial \omega^r} \left(\frac {y^{\omega}} {\omega}\right)= \left(\frac {y^{\omega}}
+{\omega}\right) \left\{(\log y)^r + \sum_{i=1}^r \frac {(-1)^i r \cdots (r-i+1) (\log y)^{r-i}} {\omega^i} \right\}
+$$
+
+- [Tex教程](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes)
+
+- [Tex速查表](https://mdit-plugins.github.io/zh/tex.html#tex-tutorial)
+
+:::
+
+## 8. 任务列表
+
+::: preview 任务列表演示
+
+- [x] 计划A
+- [ ] 计划B
+
+:::
+
+## 9. 选项卡
+
+:::: preview 选项卡演示
+
+::: tabs
+
+@tab 教学
+
+1
+
+```python
+print("1")
+```
+
+![](./website-writting-note.assets/222053605.jpg)
+
+@tab 实操
+
+2
+
+@tab 可以放更多的`@tab`
+
+:::
+
+> **注意**：preview前跟的冒号数只要前后一致就行，但一定注意不能与内容中出现的冒号连续数相同，会因此导致系统无法分辨
+
+---
+
+::: tabs#travel
+
+@tab 计划 A#北京
+
+去北京
+
+@tab 计划 B#上海
+
+去上海
+
+:::
+
+---
+
+::: tabs#travel
+
+@tab 北京
+
+- 天安门
+- 朝阳区
+- 人民大会堂
+
+@tab 上海
+
+- 上海滩
+- 东方明珠
+
+:::
+
+> **注意**：`#`在此作用非同小可，起到一个绑定的作用，在井号后的关键词，如果在后续tab后重复出现，两者内容就会互相绑定，同时显现，同时三冒号后的tab所关系的关键词需要重复输入井号才能绑定，而@后的tab所关系的关键词则不需要
+
+::::
+
+## 10. 代码块分组
+
+:::: preview 代码块分组演示
+
+::: code-tabs
+
+@tab 代码1
+
+```python
+print('hello bornforthis')
+```
+
+@tab 代码2
+
+```python
+a=1
+b=1
+print(a+b)
+```
+
+@tab 代码3
+
+```python
+a=b=1
+print(a)
+print(b)
+```
+
+:::
+
+---
+
+::: code-tabs#shell
+
+@tab Python
+
+```python
+a,b,c=1,2,3
+```
+
+@tab pnpm
+
+```bash
+pnpm add -D 组建名称
+```
+
+:::
+
+---
+
+::: code-tabs#shell
+
+@tab Python
+
+```python
+print(a,b,c)
+```
+
+@tab pnpm
+
+```bash
+pnpm add -D vuepress-theme-hope
+```
+
+:::
+
+::::
+
+## 11. 行内代码
+
+::: preview 行内代码区分
+
+pnpm install xxxx 此为行内代码，与正文一致，无法区分
+
+`pnpm install xxxx`  这就不是
+
+:::
+
+## 12. 提示容器
+
+:::: preview 提示容器演示
+
+::: important
+
+重要容器
+
+:::
+
+::: info
+
+信息容器
+
+:::
+
+::: note
+
+注释容器
+
+:::
+
+::: tip
+
+提示容器
+
+:::
+
+::: warning
+
+警告容器
+
+:::
+
+::: caution
+
+危险容器
+
+:::
+
+::: details
+
+详情容器
+
+:::
+
+> **注**：在`details`  `tip` 等容器字符后加空格并填写文字可将容器标题改为自己的文字
+
+::: caution 1
+
+:::
+
+::::
+
+## 13. 标记
+
+::: preview 标记演示
+
+你好，==William==
+
+:::
+
+## 14. 剧透
+
+::: preview 剧透演示
+
+你好，!!William!!
+
+:::
+
+## 15. 自定义对齐
+
+:::: preview 自定义对齐演示
+
+::: left
+
+左对齐的内容
+
+:::
+
+::: center
+
+居中的内容
+
+:::
+
+::: right
+
+右对齐的内容
+
+:::
+
+::: justify
+
+两端对齐的内容
+
+:::
+
+::::
+
+## 16. 文章加密
+
+文章：`theme.ts`
+
+![image-20250811214828895](./website-writting-note.assets/image-20250811214828895.png)
+
+其中第三行双引号的对标要加密的文章，如果不写就默认给所有文章加密
+
+`hint`是提示
+
+`password`是密码
+
+> **注**：找不到没关系：用`command+f`打开搜索界面，其中f是find的简写
+
