@@ -4,7 +4,7 @@ icon: blog
 date: 2025-08-06 21:58:44
 author: yhy72819
 category:
-    - 教程
+    - 网站教程
 tag:
     - notebook
 isOriginal: true

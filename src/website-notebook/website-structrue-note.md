@@ -1,3 +1,29 @@
+---
+title: 静态网站搭建笔记
+icon: blog
+date: 2025-08-12 21:17:48
+author: yhy72819
+category:
+    - 网站教程
+tag:
+    - note
+isOriginal: true
+sticky: false
+star: false
+article: true
+timeline: true
+image: false
+navbar: true
+sidebarIcon: true
+comment: true
+lastUpdated: true
+editLink: true
+backToTop: true
+toc: true
+---
+
+
+
 主题官方文档：vuepress
 
 主题官网主页：[主页](https://theme-hope.vuejs.press/zh/)
