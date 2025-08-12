@@ -468,3 +468,12 @@ pnpm install xxxx 此为行内代码，与正文一致，无法区分
 
 > **注**：找不到没关系：用`command+f`打开搜索界面，其中f是find的简写
 
+## 17. 颜色
+
+::: preview 颜色演示
+
+<span style="color:red">红色</span>
+
+>此为html（前端）语法
+
+:::
