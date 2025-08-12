@@ -1,166 +1,143 @@
----
-title: 静态网站搭建
-icon: blog
-date: 2025-08-09 19:58:19
-author: yhy72819
-category:
-    - 教程
-tag:
-    - notebook
-isOriginal: true
-sticky: false
-star: false
-article: true
-timeline: true
-image: false
-navbar: true
-sidebarIcon: true
-comment: true
-lastUpdated: true
-editLink: true
-backToTop: true
-toc: true
----
-
-
-
 主题官方文档：vuepress
 
 主题官网主页：[主页](https://theme-hope.vuejs.press/zh/)
 
 ## 1. 进入服务终端
 
-::: preview 进入服务终端
-
     1. 文件夹新建 command+shift+n
     2. snipaste截图option+1，取消esc
     3. 在文件上右键点服务再点N I2 tab here进入终端
 
-![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753192205462-056fd090-02fb-42df-bdfe-cc2eb0cac169.png)
-
-:::
+![](./website-structrue-note.assets/image.png)
 
 ## 2. 命令解释
 
-::: preview 命令解释
-
     2. pwd：查询该文件的路径  cd：全称 change direction 切换文件路径（由于前置项目可能不是你目标文件项目，直接输入指令会定位到前置项目上，这时就可用cd来切换到目标文件，注意要从父文件夹上一级一级选下来，否则会找不到） 注意：warn是警告，无需注意，需要注意的是error
-
-:::
 
 ## 3.  选项
 
- ::: preview 选项![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753192876812-106f510e-28bb-45f2-bcf8-49e5c288859b.png)
+![Snipaste_2025-07-22_21-58-45.png](./website-structrue-note.assets/1753192876812-106f510e-28bb-45f2-bcf8-49e5c288859b.png)
 
 ## 4. Care
 
-::: preview Care
-
-    1. <font style="color:rgb(60,60,67);">如何使用以及查看官方文档进行操作； </font>
-    2. <font style="color:rgb(60,60,67);">各个工具的使用； （在终端直接输入以下代码下载）</font>
+    1. 如何使用以及查看官方文档进行操作
+    2. 各个工具的使用； （在终端直接输入以下代码下载）
 
 ```plain
 brew install “软件名”
 ```
 
-    3. <font style="color:rgb(60,60,67);">整个网站项目的逻辑要建立起来；（各个软件、各个部分分别是做什么的…..） </font>
-    4. <font style="color:rgb(60,60,67);">提问； </font>
-
-:::
+    3. 整个网站项目的逻辑要建立起来；（各个软件、各个部分分别是做什么的…..） 
+    4. 提问
 
 ## 5. Not Care
 
-::: preview Not-care
-
-    5. <font style="color:rgb(60,60,67);">不去深度探究原理、技术；</font>
-
-:::
+    5. 不去深度探究原理、技术
 
 ## 6. 本地项目初始化：
-
-::: preview 本地项目初始化
 
 ```plain
 pnpm create vuepress-theme-hope my-docs
 ```
 
-:::
-
 ## 7. 本地项目运行
 
-::: preview 本地项目运行
+1. 使用终端进到网站路径下：鼠标右键-->服务-->new item to Tab here
 
-    1. 使用终端进到网站路径下：鼠标右键-->服务-->new item to Tab here![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753192205462-056fd090-02fb-42df-bdfe-cc2eb0cac169.png)
-    2. 使用如下启动本地服务器
+![img](./website-structrue-note.assets/1753192205462-056fd090-02fb-42df-bdfe-cc2eb0cac169.png)
+
+2. 使用如下启动本地服务器
 
 ```plain
  pnpm run docs:dev
 ```
 
-![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753278250827-4ebaa8c0-af16-43aa-a480-0653e65b7f93.png)
+![img](./website-structrue-note.assets/1753278250827-4ebaa8c0-af16-43aa-a480-0653e65b7f93.png)
 
-         c.浏览器访问方式：
-    
-        1. 方法一：Command+鼠标点击，直接激活默认浏览器访问
-        2. 方法二：鼠标选中链接并复制，粘贴到浏览器地址框中回车即可访问
-    
-         d.本地服务关闭：Control+c进行退出
-    
-        1. 当网站遇到未知问题时，首选停止并重新启动进行尝试
-        2. 还有一种是真的有问题，重启也没用，就开始排查
+3. 浏览器访问方式:
 
-:::
+方法一：Command+鼠标点击，直接激活默认浏览器访问
+
+方法二：鼠标选中链接并复制，粘贴到浏览器地址框中回车即可访问
+
+4. 本地服务关闭：Control+c进行退出
+
+a. 当网站遇到未知问题时，首选停止并重新启动进行尝试
+
+b. 还有一种是真的有问题，重启也没用，就开始排查
 
 ## 8. Github仓库创建与部署
-
-::: preview Github仓库创建与部署
 
 ---
 
 ### 8.1. Github创建服务器仓库
 
-        1. 访问Github：[https://github.com/](https://github.com/)
-        2. 
-    
-    ![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753360258437-c4f91627-09da-49ed-968e-f19b4dfed23b.png)![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753360299908-de34b0fd-ea73-4f3c-bee3-940a4d08f4ab.png)
+1. 访问Github [](https://github.com/)
 
-### 8.2 把网站推送到Github仓库：
+2.  
 
-    1. 切换至SSH：使用SSH可直接使用SSH密钥，如用Https，则每次对仓库操作，都需要输入账号和密码进行验证，因此为了便捷就用SSH![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753363043146-6b80a506-25d0-4197-9367-709d391db79c.png)
-    2. 按照给出的命令执行，但是有些要修改（要修改并执行在本地，并非在网页上修改，网页只是提供模版给你看）![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753363721309-c3d719a0-203f-41f5-b36c-6f6e06a5a30b.png)
+![img](./website-structrue-note.assets/1753360258437-c4f91627-09da-49ed-968e-f19b4dfed23b-20250812210013630.png)
+
+![img](./website-structrue-note.assets/1753360299908-de34b0fd-ea73-4f3c-bee3-940a4d08f4ab.png)
+
+### 8.2. 把网站推送到Github仓库：
+
+1. 切换至SSH：使用SSH可直接使用SSH密钥，如用Https，则每次对仓库操作，都需要输入账号和密码进行验证，因此为了便捷就用SSH
+
+![img](./website-structrue-note.assets/1753363043146-6b80a506-25d0-4197-9367-709d391db79c.png)
+
+2. 按照给出的命令执行，但是有些要修改（要修改并执行在本地，并非在网页上修改，网页只是提供模版给你看）
+
+![img](./website-structrue-note.assets/1753363721309-c3d719a0-203f-41f5-b36c-6f6e06a5a30b.png)
 
 ```plain
 git init #初始化本地仓库（init即为inition的简写）
 git add . #进行提交登记，“."代表添加路径下所有文件，文件夹（要将默认的readme.md改成.)
-git commit -m "本次提交的信息｜本次做出的修改信息” #上一步登记完成后，这一步进行提交审核
+git commit -m "本次提交的信息｜本次做出的修改信息"#上一步登记完成后，这一步进行提交审核
 git branch -M main #指定分支为“main”(main就是自动选主要文件，一般不用改main）
 git remote add origin git@账户仓库网址如上（无网址前缀） #设定数据要推送的目标仓库（地址）
 git push -u origin main #开始推送/地址为“main”分支
 ```
 
-![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753363390232-5f427254-1abe-4871-8b56-6004504ea35e.png)echo是指在无该文件夹的时候自动创建文件夹，但若已经有该文件夹，则删除该段代码
+![img](./website-structrue-note.assets/1753363390232-5f427254-1abe-4871-8b56-6004504ea35e.png)
+
+echo是指在无该文件夹的时候自动创建文件夹，但若已经有该文件夹，则删除该段代码
 
 ### 8.3 开始推送
 
-    1. 启动终端，路径在网站路径下；![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753364597161-56f93218-d603-45b7-aa2b-703ed61ad950.png)
-    2. 开始执行命令![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753364875339-9b1e0512-59b0-48fb-ba71-745d55e3f741.png)![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753364902393-5268b9ed-dddc-4040-b2c5-f3684df03ed0.png)![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753364925514-aaa699b6-737a-4349-8f96-123830a082e6.png)
-    3. 刷新Github界面，会发现所有文件已经上传成功(注意，上传的时候一个仓库对应一个文件夹，建新仓库的时候一定要建新文件夹）
+1. 启动终端，路径在网站路径下；
 
-![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753365022511-1bc2f91e-9c25-452f-9191-a709c192e31d.png)
+![img](./website-structrue-note.assets/1753364597161-56f93218-d603-45b7-aa2b-703ed61ad950.png)
+
+2. 开始执行命令
+
+![img](./website-structrue-note.assets/1753364875339-9b1e0512-59b0-48fb-ba71-745d55e3f741.png)
+
+![img](./website-structrue-note.assets/1753364925514-aaa699b6-737a-4349-8f96-123830a082e6.png)
+
+3. 刷新Github界面，会发现所有文件已经上传成功(注意，上传的时候一个仓库对应一个文件夹，建新仓库的时候一定要建新文件夹）
+
+![img](./website-structrue-note.assets/1753365022511-1bc2f91e-9c25-452f-9191-a709c192e31d.png)
 
 ### 8.4 设置部署（设置部署后，公网即可访问网站）
 
-    4. 点击设置settings：![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753365173354-7fe16687-f274-4986-9ae7-9e01e3f5f11e.png)
-    5. 点击Pages：![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753365247064-10461bad-70ae-4716-a0e0-a54576528fec.png)
-    6. 切换部署方式：![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753365407056-6d8ae513-4be7-481b-8240-87f715fd0fce.png)
-    7. 开始部署![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753365833639-8a37f661-4ef9-40cd-a130-085de3a0b4e5.png)
-    8. 检查部署是否成功（框内的是对勾就成功）![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753366137711-5553f959-18fd-4865-87d6-ffe9ddd49219.png)
+1. 点击设置settings：
 
-:::
+![image.png](./website-structrue-note.assets/1753365173354-7fe16687-f274-4986-9ae7-9e01e3f5f11e.png)
+
+2. 点击Pages：
+
+![img](./website-structrue-note.assets/1753365247064-10461bad-70ae-4716-a0e0-a54576528fec.png)
+
+3. 开始部署
+
+![img](./website-structrue-note.assets/1753365833639-8a37f661-4ef9-40cd-a130-085de3a0b4e5.png)
+
+4. 检查部署是否成功（框内的是对勾就成功）
+
+![img](./website-structrue-note.assets/1753366137711-5553f959-18fd-4865-87d6-ffe9ddd49219.png)
 
 ## 9. VScode项目
-
-::: preview VScode项目
 
 注：每一次修改都要提交，提交完后进入github看修改部署是否成功，如成功就再用公网域名进入自己网站检验（不能用本地，因为本地无需部署即可修改）
 
@@ -184,16 +161,20 @@ git push -u origin main #开始推送/地址为“main”分支
         2. 输入："code ."(进入VScode）
         3. 后面同方法1
 
-:::
-
 ## 10.设置专属域名
 
-::: preview 设置专属域名
+1. 购买域名：[](https://www.aliyun.com/[)
+2. 登录阿里云设置域名解析，解析到Github提供的默认域名![img](./website-structrue-note.assets/1753537234846-059d784a-185e-42ec-9254-94f4c28deb29.png)
 
-    1. 购买域名：[https://www.aliyun.com/](https://www.aliyun.com/)
-    2. 登录阿里云设置域名解析，解析到Github提供的默认域名![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753537234846-059d784a-185e-42ec-9254-94f4c28deb29.png)![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753537297861-6e7702e7-779e-4044-863b-f0d53ad29208.png)![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753537357566-bffa7c6e-cea6-4220-8dd8-c649f6af3cc1.png)![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753537409936-74f1d662-7555-48ba-975e-ec531d6df9c4.png)![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753537552370-c2e423b0-6ad0-4e74-a176-e99c8e029e2a.png)
+![img](./website-structrue-note.assets/1753537297861-6e7702e7-779e-4044-863b-f0d53ad29208.png)
 
-此时www即为网站前缀但要注意，一定要在此之后再添加记录改为@以此允许不输前缀只输域名即可访问的情况![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753537631557-ff48c6c2-beee-44b7-9379-e183d6b480a7.png)
+![img](./website-structrue-note.assets/1753537357566-bffa7c6e-cea6-4220-8dd8-c649f6af3cc1.png)
+
+![img](./website-structrue-note.assets/1753537552370-c2e423b0-6ad0-4e74-a176-e99c8e029e2a.png)
+
+此时www即为网站前缀但要注意，一定要在此之后再添加记录改为@以此允许不输前缀只输域名即可访问的情况
+
+![img](./website-structrue-note.assets/1753537631557-ff48c6c2-beee-44b7-9379-e183d6b480a7.png)
 
          c.设置域名的目的：
     
@@ -207,11 +188,7 @@ git push -u origin main #开始推送/地址为“main”分支
         1. 原因：需要让github知道这个解析是被允许的
         2. 方法：打开VScode，在左侧目录的src文件下选择vuepress，在此文件下选择public，在public文件夹下新建CNAME文件并在此文件下输入网站域名（公网网站），即可成功![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753619651218-501d8066-7eab-4426-9b38-46cb11d936dd.png)
 
-:::
-
 ## 11. 修改网站主页信息
-
-::: preview 修改网站主页信息
 
 ---
 
@@ -332,11 +309,7 @@ medias: {
 
 对于sidebar，我们无需如navbar一样一个一个输，可用如下图格式直接令其自动生成（structure即为自动生成的指令）![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1753884166418-6fec1b65-7fbc-43c7-a74d-8fe84c90bff1.png)
 
-:::
-
 ## 12.增加网页评论
-
-::: preview 增加网页评论
 
 ### 12.1:LeanCloud设置（数据库）
 
@@ -400,11 +373,7 @@ comment：true
 
 也可以直接在theme.ts行中加上如上代码直接为所有文章开启评论区
 
-:::
-
 ## 13. 更多快捷键
-
-::: preview 更多快捷键
 
 command+Z撤回
 
@@ -416,11 +385,7 @@ command+/备注与取消备注
 
 control+C停止运行
 
-:::
-
 ## 14.图标修改
-
-::: preview 图标修改
 
 vuepress系统支持如下三种图标：
 
@@ -444,11 +409,7 @@ Pro是付费款，选择不付费的，并点击![](https://cdn.nlark.com/yuque/
 
 同时，ico文件只存在于图标处，不能与已上传图片一样可用路径直接搜索到图片的网址观看图片，因此，ico文件是无链接形式的，通过链接无法搜索到该图标
 
-:::
-
 ## 15. 搜索功能
-
-::: preview 搜索功能
 
 进入vuepress后点击指南中的功能，再点击其中的搜索![](https://cdn.nlark.com/yuque/0/2025/png/58919770/1754399516070-6496e30f-ab7c-44a7-8d61-c38a094efb86.png)
 
@@ -492,13 +453,9 @@ placeholder指的是搜索栏中未有文字输入时默认显示的字
 
 至此，框架已全部建成
 
-:::
-
 ---
 
 ## 17. 文章编写的基础配置
-
-::: preview  文章编写的基础配置
 
 注：我们现在需要使用Typora（非常方便）
 
