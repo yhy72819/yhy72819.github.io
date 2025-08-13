@@ -48,3 +48,152 @@ toc: true
 ### 2.3 变量的特点
 
 特点：变量的值会被覆盖，只会记得最后一个值
+
+
+
+## 3. 如何创建变量——赋值语句
+
+1. 变量：通过变量名代表或引用某个值
+2. 初始化赋值语句： 变量名=表达式（其中的等号是赋值运算符，即将等号左边的东西赋予右边东西的意义，如此时就是令变量名具有表达式的意义
+
+**例**：1. x=3，自此之后所有x就都与3由相同含义
+
+- 变量名：就是这个空间，我们叫他什么名字
+- 表达式：类似数学表达
+
+3. 程序的运行逻辑：从上到下，从右到左（这里的右，指的是先执行右边的整体），最后才是赋值
+4. 代码示例
+
+```pyhon
+x=1 # 1 赋值给了 x，x 代表1
+x=x+10 # x + 10 等价于 1 + 10 最后得出 11，11 赋值给 x
+print(x) # print 打印，输出
+# 井号是用来注释，注解，解释某一行代码的功能及作用
+```
+
+注意，由程序从上至下，从右往左的了逻辑，最后出现的变量x是第二行最左侧的x，又由于变量的值会被覆盖这一特点，故只会输出最后一个出现的x所代表的值，故结果为
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+11
+
+Process finished with exit code 0
+
+```
+
+再来一次
+
+```python
+name1 = "lilei"
+name2 = name1
+print(name2)
+```
+
+结果是
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/02.py 
+lilei
+
+Process finished with exit code 0
+```
+
+这说明了**在等号两侧都为变量时，左侧变量会继承右侧变量的意义**
+
+继续
+
+```python
+name1 = "lilei"
+name1 = "hanmeiemi"
+print(name1)
+```
+
+结果是
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/02.py 
+hanmeiemi
+
+Process finished with exit code 0
+
+```
+
+这说明了**在同一变量的情况下，程序只会记忆该变量的最后一次赋值**
+
+## 3. 探究 print
+
+### 3.1 同时输出多个数据
+
+```python
+a = 1
+b = 2
+c = 3
+print(a,b,c)
+```
+
+结果是
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/02.py 
+1 2 3
+
+Process finished with exit code 0
+```
+
+### 3.2 sep 修改多个变量同时输出的间隔
+
+```python
+a = 1
+b = 2
+c = 3
+print(a,b,c, sep='')
+```
+
+我们就可用sep语言来修改间隔，其中单括号内的内容便是间隔内容，**注意**：空格键也算内容，如上图结果为
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/02.py 
+123
+
+Process finished with exit code 0
+
+```
+
+如果加上空格
+
+```python
+a = 1
+b = 2
+c = 3
+print(a,b,c, sep=' ')
+```
+
+那结果就是
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/02.py 
+1 2 3
+
+Process finished with exit code 0
+
+```
+
+同理，加上文字
+
+```python
+a = 1
+b = 2
+c = 3
+print(a,b,c, sep='你好')
+```
+
+结果是
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/02.py 
+1你好2你好3
+
+Process finished with exit code 0
+
+```
+
