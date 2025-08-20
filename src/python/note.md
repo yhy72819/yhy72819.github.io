@@ -1,14 +1,12 @@
 ---
-title:
+title: 基础配置
 icon: blog
 date: 2025-08-13 21:57:05
-author:
+author: yhy72819
 category:
-    - 你的分类1
-    - 你的分类2
+    - all
 tag:
-    - 你的标签1
-    - 你的标签2
+    - note
 isOriginal: true
 sticky: false
 star: false

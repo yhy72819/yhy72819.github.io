@@ -2,7 +2,7 @@
 Title: 02-初识数据类型
 icon: blog
 date: 2025-08-17 21:25:35
-author:
+author: yhy72819
 category:
     - python
 tag:
