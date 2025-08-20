@@ -1,5 +1,5 @@
 ---
-Title: 02-初识数据类型
+title: 02-初识数据类型
 icon: blog
 date: 2025-08-17 21:25:35
 author: yhy72819
