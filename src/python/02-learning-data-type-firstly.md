@@ -150,7 +150,7 @@ Process finished with exit code 0
 
     3. 列表里的每一个元素算一个(元素间用逗号隔开）；
 
-        比如：``lst = [“aiyuechuang”, 12];``
+         比如：``lst = [“aiyuechuang”, 12];``
 
         上面 lst 有两个元素，下标分别是:
 
@@ -158,6 +158,7 @@ Process finished with exit code 0
         2. 12 是下标 1 （从左到右），也是下标 -1 （从右到左）
 
 2. 可变性：在程序运行过程中，列表可以改变、添加、删除、修改
+
 3. 任意数据类型：注意，这里所说的任意数据类型，指的是 Python 所拥有的数据类型；
 
 ::: important
@@ -202,13 +203,13 @@ Process finished with exit code 0
 
     3. 元组里的每个元素算一个
 
-        比如：tup = (“aiyuechuang”, 12);
+         比如：tup = (“aiyuechuang”, 12);
 
         上面的 tup 有两个元素，下标分别是：
 
-        ​	aiyuechuang 是下标 0 (从左到右) ，也是下标 -2 (从右到左) ；
+        1. aiyuechuang 是下标 0 (从左到右) ，也是下标 -2 (从右到左) ；
 
-        ​	12 是下标1（从左到右），也是下标 -1 （从右到左）
+        2. 12 是下标1（从左到右），也是下标 -1 （从右到左）
 
 2. 不可变性：同字符串
 
