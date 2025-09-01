@@ -307,7 +307,7 @@ string = "bornforthis"
 select = string[start: end]
 ```
 
-> **注**：end 需要 +1 才能包含该字符（可以把中括号里的内容当作左闭右开的区间）
+> **注**：end 需要 +1 才能包含该字符（可以把中括号里的内容当作左闭右开的区间）(同时倒叙情况下end需要-1)
 
 ```python
 string = "bornforthis"
@@ -461,12 +461,259 @@ Process finished with exit code 0
     Process finished with exit code 0
     ```
 
-## 5. 字符串的优化
+### 4.4 字符串的优化
 
 语法：
 
 ```python
 string = "0123456789"
-select = string[::step]
+select = string[::step] #省略开始和结尾，默认从开始到最后,同时省略可选择，可以只省略其中之一
 ```
 
+- 例子：
+
+    ```python
+    string = "bornforthis"
+    select = string[::3]
+    print(select)
+    ```
+
+    结果为：
+
+    ```python
+    /Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+    bnri
+    
+    Process finished with exit code 0
+    ```
+
+- 例子：
+
+    ```python
+    string = "bornforthis"
+    select = string[1::3]
+    print(select)
+    ```
+
+    结果为：
+
+    ```python
+    /Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+    ofts
+    
+    Process finished with exit code 0
+    ```
+
+- 例子：
+
+    ```python
+    string = "0123456789"
+    select = string[::2]
+    print(select)
+    ```
+
+    结果为：
+
+    ```python
+    /Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+    02468
+    
+    Process finished with exit code 0
+    ```
+
+- 例子：
+
+    ```python
+    string = "0123456789"
+    select = string[1::2]
+    print(select)
+    ```
+
+    结果为：
+
+    ```python
+    /Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+    13579
+    
+    Process finished with exit code 0
+    ```
+
+### 4.5 字符串的倒序
+
+1. 实现：字符串的第三个位置，控制的是字符串提取的方向。默认为正数 1，如果我们改成 -1，则会变成反方向
+
+::: warning
+
+正负控制方向，数字大小控制步长。
+
+:::
+
+我们继承上面正序的思路尝试：
+
+```python
+string = "bornforthis"
+select = string[0:11:-1]
+print(select)
+```
+
+但却发现：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+
+
+Process finished with exit code 0
+```
+
+没有结果，这说明出现了一些问题。
+
+我们知道字符串格式是先`start`再`end`,也就是说，起点是`b`,终点是`s`,自左向右，但索引方向却是自右向左，即不可能存在一种情况，使得索引成功完成，故其内容矛盾，出现空白的输出结果
+
+
+
+我们经过思考，调整了数字位置
+
+```python
+string = "bornforthis"
+select = string[11:0:-1]
+print(select)
+```
+
+却发现结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+sihtrofnro
+
+Process finished with exit code 0
+```
+
+少了个`b`，
+
+这又是为什么呢？
+
+根据上节`end`的性质可知，`end`侧区间是开区间，也就是说，在正数索引倒叙的情况下，我们永远无法索引到 0 所在的这个字符
+
+于是我们想到了负数索引(这也就是为什么要设置两套索引方案)
+
+```python
+string = "bornforthis"
+select = string[-1:-12:-1]
+print(select)
+```
+
+成功出现预想结果：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+sihtrofnrob
+
+Process finished with exit code 0
+```
+
+**小试牛刀**：任务：提取rofn
+
+```python
+string = "bornforthis"
+select = string[-5:-9:-1]
+print(select)
+```
+
+结果：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+rofn
+
+Process finished with exit code 0
+```
+
+## 5. 字符串的内置方法
+
+### 5.1 upper函数
+
+将字符串内所有字母都变成大写
+
+```python
+string = "bornforthis"
+upper_string = string.upper()
+print(upper_string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+BORNFORTHIS
+
+Process finished with exit code 0
+```
+
+这就是字符串的大写化函数：.upper()（即将字符串内所有字母都变成大写）
+
+> **注**：python 中的所有函数后面都要接一个小括号使其正常表达
+
+### 5.2 lower函数
+
+将字符串内所有字母都变成小写
+
+```python
+tring = "BORNFORTHIS"
+upper_string = string.lower()
+print(upper_string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+bornforthis
+
+Process finished with exit code 0
+```
+
+这就是字符串的小写化函数：.lower()（即将字符串内所有字母都变成小写）
+
+### 5.3 capitalize函数
+
+将字符串首字母转换成大写。「只对第一个字母大写，其它后面的字符会变成小写」
+
+示例：
+
+```python
+string = "BORNFORTHIS To"
+upper_string = string.capitalize()
+print(upper_string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+Bornforthis to
+
+Process finished with exit code 0
+```
+
+思考：能否多个函数叠加呢？
+
+答：不能，但可以连用
+
+原理：由于`string.capitalize()`本身就是字符串，也就是说，可以在它后面继续加入函数，即：
+
+```python
+string = "BORNFORTHIS To"
+upper_string = string.capitalize().lower()
+print(upper_string)
+```
+
+结果成功变成：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+bornforthis to
+
+Process finished with exit code 0
+```
+
+这就是对`string.capitalize()`这个整体使用lower的效果，可以说，同属性的函数连用只要看最后一个函数是什么就可以判断结果
