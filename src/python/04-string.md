@@ -717,3 +717,242 @@ Process finished with exit code 0
 ```
 
 这就是对`string.capitalize()`这个整体使用lower的效果，可以说，同属性的函数连用只要看最后一个函数是什么就可以判断结果
+
+### 5.4 title 函数
+
+将字符串中的每个单词的首字母转换成大写，其余字母转换成小写
+
+示例
+
+```python
+string = "bORNFOrTHIS tO"
+title_string = string.title()
+print(title_string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+Bornforthis To
+
+Process finished with exit code 0
+```
+
+> **注**：只要两个英文字母之间存在间隔，且隔的不是英语字母，就会视为两个新单词，那么后一个字母就会大写
+>
+> ```python
+> string = "bORNFOrTHIS是tO"
+> title_string = string.title()
+> print(title_string)
+> ```
+>
+> 结果就是：
+>
+> ```python
+> /Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+> Bornforthis是To
+> 
+> Process finished with exit code 0
+> ```
+
+### 5.5 startswith 函数
+
+示例1: 检测字符串是否以“b”开头？
+
+```python
+string = "bornforthis"
+startswith_string = string.startswith("b")
+print(startswith_string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+True
+
+Process finished with exit code 0
+```
+
+示例2:检测字符串是否以“b1”开头？
+
+```python
+string = "bornforthis"
+startswith_string = string.startswith("b1")
+print(startswith_string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+False
+
+Process finished with exit code 0
+```
+
+示例3: 多个字符同时输入检测
+
+```python
+string = "bornforthis"
+startswith_string = string.startswith("bornforthis")
+print(startswith_string)
+```
+
+结果为
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+True
+
+Process finished with exit code 0
+```
+
+综上所述：
+
+startswith检测时只要内容正确，无论多少字符都会显示`true`
+
+### 5.6 endswith
+
+检测字符串是否以特定字符或单词结尾，返回布尔值
+
+其性质基本与startswith相同
+
+示例1：
+
+```python
+string = "bornforthis"
+endswith_string = string.endswith("s")
+print(endswith_string)
+```
+
+结果为`true`
+
+示例2:
+
+```python
+string = "bornforthis"
+endswith_string = string.endswith("bornforthis")
+print(endswith_string)
+```
+
+结果为`true`
+
+这证明了输入endswith时要正向输入字母
+
+### 5.7 count函数
+
+计算特定字符或单词在目标字符串中存在的次数
+
+示例1: 重复单词的次数展示
+
+```python
+string = "bornforthis"
+count_string = string.count("r")
+print(count_string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+2
+
+Process finished with exit code 0
+```
+
+示例2: 不存在单词的次数展示
+
+```python
+string = "bornforthis"
+count_string = string.count("q")
+print(count_string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+0
+
+Process finished with exit code 0
+```
+
+注意到：并不会报错
+
+示例三： 单词组的次数展示：
+
+```python
+string = "bornforthis"
+count_string = string.count("born")
+print(count_string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+1
+
+Process finished with exit code 0
+```
+
+### 5.8 find 函数
+
+寻找目标字符或单词在特定字符串中，第一次出现的下标。也就是出现重复的，也只是返回第一次出现的下标。如果是查找单词（其实不一定是单词，也可以是多个字符组成的字符组）`find()`会返回目标单词的第一个字符的下标
+
+如果：查询的字符或单词不存在，会返回`-1`。
+
+示例1:
+
+```python
+string = "bornforthis"
+find_string = string.find("o")
+print(find_string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+1
+
+Process finished with exit code 0
+```
+
+示例2:
+
+```python
+string = "bornforthis"
+find_string = string.find("or")
+print(find_string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+1
+
+Process finished with exit code 0
+
+```
+
+示例3:
+
+```python
+string = "bornforthis"
+find_string = string.find("od")
+print(find_string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01.py 
+-1
+
+Process finished with exit code 0
+```
+
