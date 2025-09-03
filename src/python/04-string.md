@@ -956,3 +956,236 @@ print(find_string)
 Process finished with exit code 0
 ```
 
+### 5.9 index 函数
+
+寻找目标字符或单词在特定字符串中，第一次出现的下标。如果是查找单词，那么`index()`返回目标单词的第一个字符的下标。
+
+
+
+如果，查询的字符或单词不存在，则报错
+
+示例1:
+
+```python
+string = "bornforthis"
+index_result = string.index('o')
+print(index_result)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01 .py 
+1
+
+进程已结束，退出代码为 0
+```
+
+示例2:
+
+```python
+string = "bornforthis"
+index_result = string.index('a')
+print(index_result)
+```
+
+结果：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01 .py 
+Traceback (most recent call last):
+  File "/Users/yhy/Coder/experiment/01 .py", line 2, in <module>
+    index_result = string.index('a')
+ValueError: substring not found
+
+进程已结束，退出代码为 1
+```
+
+示例3:
+
+```python
+string = "bornforthis"
+index_result = string.index('for')
+print(index_result)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01 .py 
+4
+
+进程已结束，退出代码为 0
+```
+
+示例4：
+
+```python
+string = "bornforthis"
+index_result = string.index('aivc')
+print(index_result)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01 .py 
+Traceback (most recent call last):
+  File "/Users/yhy/Coder/experiment/01 .py", line 2, in <module>
+    index_result = string.index('aivc')
+ValueError: substring not found
+
+进程已结束，退出代码为 1
+```
+
+index 与 find 很类似，但仍有区别：
+
+index 不可控，find 可控：
+
+在运行文件时，find 能准确给予你具体的错误位置，但缺点是很看你的静态视力，因为要仔细检查，而index则直接报错，缺点是不知道哪里出了问题，要一个个排查。
+
+因此：
+
+- index 适用于直接检测代码是否能正常运行
+- find 更适用于观察具体错在哪里
+
+> **注**： 切换函数的快捷键为 command + shift + r
+
+### 5.10 isdigit 函数
+
+判断字符串是否为纯数字组成（出现空格都不算纯数字）
+
+示例1:
+
+```python
+string = "12345678"
+isdigit_string = string.isdigit()
+print(isdigit_string)
+```
+
+结果为：True
+
+示例2:
+
+```python
+string = "123 45678"
+isdigit_string = string.isdigit()
+print(isdigit_string)
+```
+
+结果为：False
+
+isdigit（is ：是否，digit：数字）
+
+### 5.11 isalpha 函数
+
+判断字符串是否是纯字母字符串（性质同上）
+
+示例1:
+
+```python
+string = "bornforthis"
+isalpha_string = string.isalpha()
+print(isalpha_string)
+```
+
+结果为：True
+
+示例2:
+
+```python
+string = "born forthis"
+isalpha_string = string.isalpha()
+print(isalpha_string)
+```
+
+结果为：False
+
+### 5.12 isalnum 函数
+
+判断字符串是否由纯字母，数字组成
+
+示例1:
+
+```python
+string = "bornforthis"
+isalnum_string = string.isalnum()
+print(isalnum_string)
+```
+
+结果为：True
+
+示例2:
+
+```python
+string = ("12345678")
+isalnum_string = string.isalnum()
+print(isalnum_string)
+```
+
+结果为：True
+
+示例3:
+
+```python
+string = ("bornforthis888888")
+isalnum_string = string.isalnum()
+print(isalnum_string)
+```
+
+结果为：True
+
+示例4:
+
+```python
+string = ("bornforthis 888888")
+isalnum_string = string.isalnum()
+print(isalnum_string)
+```
+
+结果为：False
+
+### 5.13 isupper 函数
+
+判断字符串字母是否纯大写（与符号无关，有符号不会影响判断）
+
+示例1:
+
+```python
+string = ("BORNFORTHIS")
+isupper_string = string.isupper()
+print(isupper_string)
+```
+
+结果为：True
+
+示例2:
+
+```python
+string = ("BORNFORTHIS12-，")
+isupper_string = string.isupper()
+print(isupper_string)
+```
+
+结果为：True
+
+示例3:
+
+```python
+string = ("BORNforthis")
+isupper_string = string.isupper()
+print(isupper_string)
+```
+
+结果为：False
+
+示例4:
+
+```python
+string = ("bornforthis")
+isupper_string = string.isupper()
+print(isupper_string)
+```
+
+结果为：False
+
