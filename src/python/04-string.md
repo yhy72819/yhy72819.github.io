@@ -1118,7 +1118,7 @@ print(isalnum_string)
 示例2:
 
 ```python
-string = ("12345678")
+string = "12345678"
 isalnum_string = string.isalnum()
 print(isalnum_string)
 ```
@@ -1128,7 +1128,7 @@ print(isalnum_string)
 示例3:
 
 ```python
-string = ("bornforthis888888")
+string = "bornforthis888888"
 isalnum_string = string.isalnum()
 print(isalnum_string)
 ```
@@ -1138,7 +1138,7 @@ print(isalnum_string)
 示例4:
 
 ```python
-string = ("bornforthis 888888")
+string = "bornforthis 888888"
 isalnum_string = string.isalnum()
 print(isalnum_string)
 ```
@@ -1152,8 +1152,8 @@ print(isalnum_string)
 示例1:
 
 ```python
-string = ("BORNFORTHIS")
-isupper_string = string.isupper()
+string = "BORNFORTHIS"
+isupper_string = string.isupper
 print(isupper_string)
 ```
 
@@ -1162,8 +1162,8 @@ print(isupper_string)
 示例2:
 
 ```python
-string = ("BORNFORTHIS12-，")
-isupper_string = string.isupper()
+string = "BORNFORTHIS12-，"
+isupper_string = string.isupper
 print(isupper_string)
 ```
 
@@ -1172,7 +1172,7 @@ print(isupper_string)
 示例3:
 
 ```python
-string = ("BORNforthis")
+string = "BORNforthis"
 isupper_string = string.isupper()
 print(isupper_string)
 ```
@@ -1182,10 +1182,245 @@ print(isupper_string)
 示例4:
 
 ```python
-string = ("bornforthis")
+string = "bornforthis"
 isupper_string = string.isupper()
 print(isupper_string)
 ```
 
 结果为：False
+
+### 5.14 islower
+
+判断字符串是否全部为小写，若全是则返回 True ，否则则返回 False ，其性质与 isupper 相同，符号，数字皆不影响
+
+示例1:判断字符串是否全为小写字母
+
+```
+string = "bornforthis"
+islower_string = string.islower()
+print(islower_string)
+```
+
+结果为：True
+
+示例2:判断字符串是否全为小写字母（含非字母字符）
+
+```python
+string = "bornforthis,-"
+islower_string = string.islower()
+print(islower_string)
+```
+
+结果为：True
+
+示例3:判断字符串是否全为小写字母（含大写字母）
+
+```python
+string = "bornforthisA123"
+islower_string = string.islower()
+print(islower_string)
+```
+
+结果为：False
+
+### 5.15 isspace
+
+判断字符串是否全为空格（空字符串不行）
+
+示例1:判断字符串是否全为空格
+
+```python
+string = "  "
+isspace_string = string.isspace()
+print(isspace_string)
+```
+
+结果为：True
+
+示例2:判断空字符串
+
+```python
+string = ""
+isspace_string = string.isspace()
+print(isspace_string)
+```
+
+结果为：False
+
+示例3: 判断非空格字符串
+
+```python
+string = "bornforthis"
+isspace_string = string.isspace()
+print(isspace_string)
+```
+
+结果为：False
+
+### 5.16 strip 函数
+
+去除原本字符串的开头与结尾的某个特点字符，而不去除其内部的相同字符（strip（）内的内容即为该特定字符，里面写什么删什么，不写默认为空格）
+
+**注意**：删除其它非空格字符时不要在开头结尾留空格，会被判定为内部,且空格属于正常的字符
+
+示例1：括号内内容空白
+
+```python
+string = " born fort his "
+strip_string = string.strip()
+print(strip_string)
+string = " born fort his "
+print(string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/03.py 
+born fort his
+ born fort his 
+
+进程已结束，退出代码为 0
+```
+
+示例2: 括号内存在内容
+
+```python
+string = "---born fort his---"
+strip_string = string.strip("-")
+print(strip_string)
+string = "---born fort his---"
+print(string)
+```
+
+特殊特性：strip函数可以同时删除多个字符，只需在其双引号内无间隔输入相应字符，且这些字符没有顺序限制
+
+如：示例3:
+
+```python
+string = "- a--born fort his-- -a"
+strip_string = string.strip("- a")
+print(strip_string)
+```
+
+即可得到结果：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/03.py 
+born fort his
+进程已结束，退出代码为 0
+```
+
+### 5.17 Istrip 函数
+
+默认去除字符串左边的空白字符，如果指定参数，则去掉左边的指定字符
+
+示例1: 默认去除左边的空白字符
+
+```python
+string = "  bornforthis  "
+lstrip_string = string.lstrip()
+print(lstrip_string)
+```
+
+结果为：
+
+```python
+
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/03.py 
+bornforthis  
+
+进程已结束，退出代码为 0
+```
+
+示例2:去掉左侧的指定字符`-`
+
+```python
+string = "---bornforthis---"
+lstrip_string = string.lstrip("-")
+print(lstrip_string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/03.py 
+bornforthis---
+
+进程已结束，退出代码为 0
+```
+
+示例3: 去掉不连续的字符
+
+```python
+string = "-- --bornforthis-- --"
+lstrip_string = string.lstrip("- ")
+print(lstrip_string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/03.py 
+bornforthis-- --
+
+进程已结束，退出代码为 0
+```
+
+### 5.18 rstrip()
+
+默认去掉字符串右边的空白字符，如果指定参数，则去掉右边的指定字符
+
+示例1: 默认去掉右侧空白字符
+
+```python
+string = "  bornforthis  "
+rstrip_string = string.rstrip()
+print(rstrip_string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/03.py 
+  bornforthis
+
+进程已结束，退出代码为 0
+```
+
+示例2:去掉右侧的指定字符`-`
+
+```python
+string = "---bornforthis---"
+rstrip_string = string.rstrip("-")
+print(rstrip_string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/03.py 
+---bornforthis
+
+进程已结束，退出代码为 0
+```
+
+示例3:去掉右侧不连续的字符
+
+```python
+string = "-- -bornforthis-- -"
+rstrip_string = string.rstrip("- ")
+print(rstrip_string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/03.py 
+-- -bornforthis
+
+进程已结束，退出代码为 0
+```
+
+
 
