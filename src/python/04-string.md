@@ -1422,5 +1422,79 @@ print(rstrip_string)
 进程已结束，退出代码为 0
 ```
 
+### 5.19 join 函数
 
+join(iterable) 将可迭代对象（如列表，元组等）中的**字符串元素**连接成一个新的字符串，可以指定连接符
+
+可迭代对象：能被拆分的对象（如分子可拆分成原子，则分子就是可迭代对象），在这么多代码类型中，只有数字型和布尔型不可拆分，为一个整体(也就是说，数字和布尔型的元素不可被拆分或连接，即便有不同元素也不行)
+
+示例1: 以`-`为分隔符拼接字符串
+
+```python
+string = "bornforthis"
+join_string = "-".join(string)
+print("原来的字符串", string)
+print("拼接后", join_string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/03.py 
+原来的字符串 bornforthis
+拼接后 b-o-r-n-f-o-r-t-h-i-s
+
+进程已结束，退出代码为 0
+```
+
+示例2: 将列表中的字符串元素用`-`连接
+
+```python
+string_list = ["bornforthis","love",'ai']
+join_result = "-".join(string_list)
+print("原来的列表", string_list)
+print("拼接后", join_result )
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/03.py 
+原来的列表 ['bornforthis', 'love', 'ai']
+拼接后 bornforthis-love-ai
+
+进程已结束，退出代码为 0
+```
+
+示例3:将字典中的字符串元素用`-`连接
+
+```python
+string_list = {"1":2, "2":3, "3":4, "4":5, "5":6}
+join_result = "-".join(string_list)
+print("原来的列表", string_list)
+print("拼接后", join_result )
+```
+
+结果为：
+```python
+
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/03.py 
+原来的列表 {'1': 2, '2': 3, '3': 4, '4': 5, '5': 6}
+拼接后 1-2-3-4-5
+
+进程已结束，退出代码为 0
+
+```
+
+发现字典的所有元素拼接只显示其键“key”的部分，而不显示其值“value”的部分
+
+::: warning
+
+value 也是可以显示的，详见字典部分
+
+:::
+
+### 5.20 练习
+
+![0bd33036b7e24480de10e277832aeb2c](./04-string.assets/0bd33036b7e24480de10e277832aeb2c.png)
 
