@@ -185,7 +185,7 @@ Process finished with exit code 0
 
 ## 3. 检测字符串的长度
 
-len()即为检测字符串长度的语法
+len()即为检测字符串长度的语法(任意字符包括空格都算一个长度)
 
 示例:
 
@@ -1424,7 +1424,7 @@ print(rstrip_string)
 
 ### 5.19 join 函数
 
-join(iterable) 将可迭代对象（如列表，元组等）中的**字符串元素**连接成一个新的字符串，可以指定连接符
+join(iterable) 将可迭代对象（如列表，元组等）中的**字符串元素**连接成一个新的字符串，可以指定连接符(han z
 
 可迭代对象：能被拆分的对象（如分子可拆分成原子，则分子就是可迭代对象），在这么多代码类型中，只有数字型和布尔型不可拆分，为一个整体(也就是说，数字和布尔型的元素不可被拆分或连接，即便有不同元素也不行)
 
@@ -1494,7 +1494,95 @@ value 也是可以显示的，详见字典部分
 
 :::
 
-### 5.20 练习
+### 5.20 replace 函数
+
+`.replace(old,new,count)`第一个位置传入待替换的旧「old」字符，第二个位置传入待替换的新字符「new」，默认替换全部，count
+
+控制替换次数。（不输入count就是默认全部替换，有count的情况下自左往右，自上而下依次替换）
+
+示例1: 替换空格为`*`
+
+```python
+string = "  bornforthis  "
+replace_string = string.replace(" ", "*")
+print("最初的字符串",string)
+print("替换后",replace_string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/03.py 
+最初的字符串   bornforthis  
+替换后 **bornforthis**
+
+进程已结束，退出代码为 0
+```
+
+示例2: 替换所有的“ai”为“love”
+
+```python
+string = "ai-bornforthis-ai"
+replace_string = string.replace("ai","love")
+print("原本的字符串",string)
+print("替换后",replace_string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/03.py 
+原本的字符串 ai-bornforthis-ai
+替换后 love-bornforthis-love
+
+进程已结束，退出代码为 0
+```
+
+示例3: 控制替换次数，仅替换一次“ai”变为“love”
+
+```python
+string = "ai-bornforthis-ai"
+replace_string = string.replace("ai","love",1)
+print("原本的字符串",string)
+print("替换后",replace_string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/03.py 
+原本的字符串 ai-bornforthis-ai
+替换后 love-bornforthis-ai
+
+进程已结束，退出代码为 0
+```
+
+示例4:多次replace替换
+
+```python
+string = "ai-bornforthis-ai"
+replace_string = string.replace("ai","love",1).replace("-","love",1)
+print("原本的字符串",string)
+print("替换后",replace_string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/03.py 
+原本的字符串 ai-bornforthis-ai
+替换后 lovelovebornforthis-ai
+
+进程已结束，退出代码为 0
+
+```
+
+
+
+### 5.21 练习
 
 ![0bd33036b7e24480de10e277832aeb2c](./04-string.assets/0bd33036b7e24480de10e277832aeb2c.png)
 
+### 5.22 空格与空行的区别
+
+> **注意**：代码中空格和空行完全是两回事，空行是`\n`表示，注意斜杠是反斜杠
