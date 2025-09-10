@@ -1586,3 +1586,216 @@ print("替换后",replace_string)
 ### 5.22 空格与空行的区别
 
 > **注意**：代码中空格和空行完全是两回事，空行是`\n`表示，注意斜杠是反斜杠
+
+## 6. 字符串格式化
+
+想像一下，如果我们要用编程编写代码来为每个到特定城市（如厦门）的人献上欢迎的语句，
+
+那就要
+
+```python
+string = " Hi, Bornforthis,Welcome to Xiamen."
+print(string)
+```
+
+但这样做每次换人和城市的时候都要重输一次代码，那么有没有一种方法，能让我们只输入人名和地区就能达到相同的目的呢
+
+最基础的方法是，将整个语句拆分成几段
+
+```python
+name = "Bornforthis"
+region = "Xiamen"
+string1 = " Hi, "
+string2 = ", Welcome to "
+string3 = "."
+result = string1 + name + string2 + region + string3
+print(result)
+```
+
+问题是：1. 太麻烦
+
+2. python 是强类型语言，不同类型的代码不能加和，因此当需要数字型等其它类型时，会报错（当然也有解决方法，把数字变成字符串，即在数字外加上 str() 函数，即`str(19)`）
+
+由此，我们需要更简便实用的函数
+
+### 6.1 format 函数
+
+1. 单个花括号`{}`
+
+    通过`format()`的方法，可以灵活地将变量插入到字符串中。
+
+    示例1: 动态插入单个变量
+
+    ```python
+    string = " Hi {}, Welcome to Xiamen.".format("aiyuechuang")
+    print(string)
+    ```
+
+    结果为：
+
+    ```python
+    /Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/03.py 
+     Hi aiyuechuang, Welcome to Xiamen.
+    
+    进程已结束，退出代码为 0
+    ```
+
+    示例2: 使用模版字符串重复利用
+
+    ```python
+    template_string = " Hi {}, Welcome to Xiamen"
+    formatted_string = template_string.format("Bornforthis")
+    print(formatted_string)
+    ```
+
+    结果为：
+
+    ```python
+    /Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/03.py 
+     Hi Bornforthis, Welcome to Xiamen
+    
+    进程已结束，退出代码为 0
+    ```
+
+2. 多个花括号
+
+    示例1: 填充两个值
+
+    ```python
+    string = " Hi {}, Welcome to {}".format("aiyuechuang","Xiamen")
+    print(string)
+    ```
+
+    结果同上
+
+    示例2: 使用模版字符串
+
+    ```python
+    template_string = " Hi {}, Welcome to {}"
+    formatted_string = template_string.format("Bornforthis","Xiamen")
+    print(formatted_string)
+    ```
+
+    结果为：
+
+    ```python
+    /Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/03.py 
+     Hi Bornforthis, Welcome to Xiamen
+    
+    进程已结束，退出代码为 0
+    ```
+
+3. 通过索引按位置指定花括号对应的值
+
+    我们通过以上观察得知，花括号的内容会自动从左到右填充，那有没有一种方法能手动规定花括号对应的值呢？
+
+    示例1: 通过索引指定值
+
+    ```python
+    string = " Hi {1}, Welcome to {0}".format("厦门", "aiyuechuang")
+    print(string)
+    ```
+
+    结果为：
+
+    ```python
+    /Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/03.py 
+     Hi aiyuechuang, Welcome to 厦门
+    
+    进程已结束，退出代码为 0
+    ```
+
+    我们发现：花括号对应的值按其括号内的索引数排布
+
+    示例2: 模版字符串中使用索引
+
+    ```python
+    template_string = " Hi {1}, Welcome to {0}"
+    formatted_string = template_string.format("上海","Bornforthis")
+    print(formatted_string)
+    ```
+
+    结果为：
+    ```python
+    /Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/03.py 
+     Hi Bornforthis, Welcome to 上海
+    
+    进程已结束，退出代码为 0
+    ```
+
+    但还是太容易混淆了
+
+    因此就有：
+
+4. 使用命名参数来填充花括号
+
+    示例1: 使用命名参数
+
+    ```python
+    string = " HI {name}, Welcome to {region}".format(name="aiyuechuang",region="Xiamen")
+    print(string)
+    ```
+
+    结果与上一致
+
+    示例2: 模版字符串中使用命名参数
+
+    ```python
+    template_string = " Hi {name}, Welcome to {region}"
+    formatted_string = template_string.format(region = "上海",name = "Bornforthis")
+    print(formatted_string)
+    ```
+
+    结果与上一致
+
+    5. 性质：format 可以适配不同类型的代码，可以直接进行自动转换并填充。
+
+        示例1: 数字型
+
+        ```python
+        string = "Money is {}".format(190)
+        print(string)
+        ```
+
+        结果为：
+
+        ```python
+        /Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/02.py 
+        Money is 190
+        
+        进程已结束，退出代码为 0
+        ```
+
+        示例2:列表
+
+        ```python
+        string = "Money is {}".format([190])
+        print(string)
+        ```
+
+        结果为：
+
+        ```python
+        /Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/02.py 
+        Money is [190]
+        
+        进程已结束，退出代码为 0
+        ```
+
+        示例3:布尔型
+
+        ```python
+        string = "Money is {}".format(True)
+        print(string)
+        ```
+
+        结果为：
+
+        ```python
+        /Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/02.py 
+        Money is True
+        
+        进程已结束，退出代码为 0
+        ```
+
+        

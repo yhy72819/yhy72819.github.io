@@ -24,6 +24,28 @@ toc: true
 
 ![89dea5355ca9eef9f87f5b52e837eb15](./02-learning-data-type-firstly.assets/89dea5355ca9eef9f87f5b52e837eb15.png)
 
+![image-20250909154031952](./02-learning-data-type-firstly.assets/image-20250909154031952.png)
+
+检测函数：type() ,   展示标志符函数：id()
+
+标志符：python中每一个字符都有自身独特的标准符，这些标准符一定为整数，而id函数就是展示其标准符
+
+如：
+
+```python
+a = None
+print(id(a))
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/02.py 
+4321850088
+
+进程已结束，退出代码为 0
+```
+
 ## 1. 数字型
 
 ### 1.1 代码示例
@@ -68,6 +90,22 @@ toc: true
     直接检测数据类型，并输出:.>>> <class 'float'>
     
     Process finished with exit code 0
+    ```
+
+3. 此外，还有另一种特殊数字型，如`1+2i`包含了实数和虚数，我们称其为 complex number（复数），但在python中，我们一般不用`i`来表示虚数，而是用`j`
+
+    ```python
+    a = 1 + 2j
+    print(type(a))
+    ```
+
+    结果为：
+
+    ```python
+    /Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/02.py 
+    <class 'complex'>
+    
+    进程已结束，退出代码为 0
     ```
 
 ## 2. 字符串
@@ -323,7 +361,7 @@ Process finished with exit code 0
     3. 字典的有序是指：字典中的键值对（键：key，值：value）是有序的，有序前期基本无用；（在同一个代码运行过程中，字典的键值对顺序是固定的）
 2. 字典的组成：是由一系列的 key 和 value 组成。`d={"key1": "value1", "key2": "value2"·······}`
 3. Key:
-    1. 不可变的数据类型，才能当字典的 key(数字，字符串，元组，布尔)
+    1. 不可变的数据类型，才能当字典的 key(数字，字符串，元组，布尔，frozenset)
 4. value：任意数据类型，Python所拥有的数据类型
 5. 可变性：可以添加、修改、删除键值对
 
@@ -408,6 +446,29 @@ Process finished with exit code 0
 
 ​	:::
 
+### 7.3 特殊分支 frozenset()
+
+特性：不可变性，一旦创建便在运行中不可修改，因此能做字典的键
+
+示例：
+
+```python
+a = frozenset(["1","2","3","4","5","6","7","8","9"])
+print(type(a))
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/02.py 
+<class 'frozenset'>
+
+进程已结束，退出代码为 0
+
+```
+
+本质上：frozenset 也是一个函数
+
 ## 8. 布尔
 
 True 和 False 两个函数即为布尔
@@ -428,5 +489,27 @@ True
 <class 'bool'>
 
 Process finished with exit code 0
+```
+
+任意输出任何一个合法存在的对象的布尔型结果都是True
+
+## 9. None
+
+None可以独立做一个代码类型
+
+演示：
+
+```python
+a = None
+print(type(a))
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/02.py 
+<class 'NoneType'>
+
+进程已结束，退出代码为 0
 ```
 
