@@ -1798,4 +1798,168 @@ print(result)
         进程已结束，退出代码为 0
         ```
 
-        
+
+6. 保留小数位
+
+    示例1:保留3位小数
+
+    ```python
+    string = "Money is {:.3f}.".format(190)
+    print(string)
+    ```
+
+​	结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/02.py 
+Money is 190.000.
+
+进程已结束，退出代码为 0
+```
+
+其中`.3f`是保留三位小数的意思，那问题来了,`:`是用来干嘛的呢？
+
+为了允许其他字符的填入，我们需要一个字符来隔开保留小数点的数字，这就是`:`的作用。
+
+示例：
+
+```python
+string = "Money is {n:.3f}.".format(n=190)
+print(string)
+```
+
+这样`:`就将数字和 n 区分出来了。（上文的命名参数即可放到 n 的位置）
+
+### 6.2 f-strings (格式化字符串字面量)
+
+Python 3.6+ 及以上版本引入了`f-string`,可以直接将变量嵌入到字符串中，更加简洁。
+
+示例1: 动态插入变量
+
+```python
+name = "Bornforthis"
+region = '厦门'
+string = f"Hi {name}, Welcome to {region}"
+print(string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/02.py 
+Hi Bornforthis, Welcome to 厦门
+
+进程已结束，退出代码为 0
+```
+
+示例2: 格式化数值并保留指定小数位
+
+```python
+money = 190
+string = f"Money is {money:.3f}."
+print(string)
+```
+
+其中{}内的 money 是为了让190传入数据，因为前面已经给 money 赋过值了
+
+故结果为：
+
+ ```python
+ /Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/02.py 
+ Money is 190.000.
+ 
+ 进程已结束，退出代码为 0
+ ```
+
+### 6.3 % 格式化
+
+#### 6.3.1 语法
+
+![709140df46bfbe7640eccb493395b75b](./04-string.assets/709140df46bfbe7640eccb493395b75b.png)
+
+示例1: 单个位置传入（单参数格式化）
+
+```python
+string = "Money is %d"
+new_s = string % 13    # 格式化填写后赋值给 new_s 变量
+print(new_s)
+
+print(string % 19)     # 直接格式化填写并 print 输出
+
+string = "Money is %d" % 190 # 格式化后输出
+print(string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/02.py 
+Money is 13
+Money is 19
+Money is 190
+
+进程已结束，退出代码为 0
+```
+
+示例2: 多个位置传入时（多参数格式化）
+
+我们一般用`()`来传入多个值(不是元组)
+
+```python
+string = "Money is %d %s"    #直接写成不包含空格的也是支持的，例如：" Money is %d%s"
+new_s = string % (13, "发大财")
+print(new_s)
+
+print(string % (888,"暴富"))
+
+string = "Money is %d %s" % (190 , "超有钱")
+print(string)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/02.py 
+Money is 13 发大财
+Money is 888 暴富
+Money is 190 超有钱
+
+进程已结束，退出代码为 0
+```
+
+示例3: 保留小数位
+
+```python
+string = "Money is %.3f"
+new_s = string % 13    # 格式化后赋值给变量new_s
+print(new_s)
+
+print(string % 18)     # 格式化后直接输出
+
+string = "Money is %.3f"  % 180
+print(string)
+```
+
+结果为： 
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/02.py 
+Money is 13.000
+Money is 18.000
+Money is 180.000
+
+进程已结束，退出代码为 0
+
+```
+
+### 6.4 f , format 和 % 的优缺点
+
+f ： 优点：简洁便捷 缺点： 必须现做现用，不能提前做好模版
+
+format ： 优点：1. 相对简单的同时能提取准备模版用以以后使用。 2. 结构更清晰
+
+​		  缺点： 不上不下，做不到 % 的全面，又做不到 f 的简便
+
+% ： 优点：全面，能解决很多 f 和 format 无法解决的问题
+
+​         缺点：太麻烦了，难以记忆

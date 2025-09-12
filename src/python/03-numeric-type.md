@@ -220,3 +220,119 @@ print(x // y)
 结果是：
 
 2
+
+## 8. Float,int 和 complex 函数
+
+### 8.1 Float()
+
+示例1: int 变float
+
+```python
+a = 10
+print(float(a))
+```
+
+结果为：
+
+```python
+/usr/local/bin/python3.14 /Users/yhy/Coder/experiment/07.py 
+10.0
+
+进程已结束，退出代码为 0
+```
+
+示例2: complex 变float
+
+```python
+a = 10+1j
+print(float(a))
+```
+
+结果为：
+
+```python
+/usr/local/bin/python3.14 /Users/yhy/Coder/experiment/07.py 
+Traceback (most recent call last):
+  File "/Users/yhy/Coder/experiment/07.py", line 2, in <module>
+    print(float(a))
+          ~~~~~^^^
+TypeError: float() argument must be a string or a real number, not 'complex'
+
+进程已结束，退出代码为 1
+```
+
+发现报错，这也就是说float函数和int函数都**只能运行实数**
+
+### 8.2 int()
+
+示例：float 变int
+
+```python
+a = 10.9
+print(int(a))
+```
+
+结果为：
+
+```python
+/usr/local/bin/python3.14 /Users/yhy/Coder/experiment/07.py 
+10
+
+进程已结束，退出代码为 0
+```
+
+观察发现：python化整不会进行四舍五入，而是直接输出其整数段
+
+### 8.3 complex()
+
+示例1: int变complex
+
+```python
+a = 10
+print(complex(a))
+```
+
+结果为：
+
+```python
+/usr/local/bin/python3.14 /Users/yhy/Coder/experiment/07.py 
+(10+0j)
+
+进程已结束，退出代码为 0
+```
+
+示例2: float变complex（小数点后为0）
+
+```python
+a = 10.0
+print(complex(a))
+```
+
+结果为：
+
+```python
+/usr/local/bin/python3.14 /Users/yhy/Coder/experiment/07.py 
+(10+0j)
+
+进程已结束，退出代码为 0
+```
+
+发现其实数段小数点后为0会**直接变成整数**
+
+示例3: float变complex（小数点后不为0）
+
+```python
+a = 10.9
+print(complex(a))
+```
+
+结果为：
+
+```python
+/usr/local/bin/python3.14 /Users/yhy/Coder/experiment/07.py 
+(10.9+0j)
+
+进程已结束，退出代码为 0
+```
+
+发现实数段仍为float

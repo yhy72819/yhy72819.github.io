@@ -26,7 +26,25 @@ toc: true
 
 ![image-20250909154031952](./02-learning-data-type-firstly.assets/image-20250909154031952.png)
 
-检测函数：type() ,   展示标志符函数：id()
+检测函数：type() 
+
+当我们像询问一串代码是否为某个类型时，我们一般写
+
+```python
+a = 1
+print(type(a) == float)  #注意要用双等号来表示
+```
+
+结果就会返还布尔型
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+False
+
+进程已结束，退出代码为 0
+```
+
+展示标志符函数：id()
 
 标志符：python中每一个字符都有自身独特的标准符，这些标准符一定为整数，而id函数就是展示其标准符
 
@@ -92,7 +110,7 @@ print(id(a))
     Process finished with exit code 0
     ```
 
-3. 此外，还有另一种特殊数字型，如`1+2i`包含了实数和虚数，我们称其为 complex number（复数），但在python中，我们一般不用`i`来表示虚数，而是用`j`
+3. 此外，还有另一种特殊数字型，如`1+2i`包含了实数和虚数，我们称其为 complex number（复数），但在python中，我们一般不用`i`来表示虚数，而是用`j`(注意：当虚数前序数为1时，也应当写上1，正确格式为：`1+1j`而非`1+j`)
 
     ```python
     a = 1 + 2j
@@ -489,6 +507,20 @@ True
 <class 'bool'>
 
 Process finished with exit code 0
+```
+
+```python
+a = 1
+print(type(a) == float)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+False
+
+进程已结束，退出代码为 0
 ```
 
 任意输出任何一个合法存在的对象的布尔型结果都是True
