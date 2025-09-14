@@ -22,6 +22,8 @@ backToTop: true
 toc: true
 ---
 
+> **注意**：所有的函数都是在原字符串基础上返还一个新字符串，而不修改原字符串
+
 ## 1. 字符串的定义
 
 字符串是由字母、数字和特殊字符组成的序列
@@ -1577,8 +1579,6 @@ print("替换后",replace_string)
 
 ```
 
-
-
 ### 5.21 练习
 
 ![0bd33036b7e24480de10e277832aeb2c](./04-string.assets/0bd33036b7e24480de10e277832aeb2c.png)
@@ -1963,3 +1963,176 @@ format ： 优点：1. 相对简单的同时能提取准备模版用以以后使
 % ： 优点：全面，能解决很多 f 和 format 无法解决的问题
 
 ​         缺点：太麻烦了，难以记忆
+
+## 7. 字符串的不可变性
+
+字符串是不可变的，不可以改变字符串中的任何元素，如需改变字符串中的元素，则需要新建一个字符串（在运行过程中）
+
+示例1: 
+
+```python
+s = "hello bornforthis"
+s[0] = "a"
+```
+
+其中第二行是将 s 中索引为0的字符换为a
+
+结果发现：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+Traceback (most recent call last):
+  File "/Users/yhy/Coder/experiment/07.py", line 2, in <module>
+    s[0] = "a"
+    ~^^^
+TypeError: 'str' object does not support item assignment
+
+进程已结束，退出代码为 1
+```
+
+示例2:
+
+```python
+s = "hello bornforthis"
+print(s.replace("h","a"))
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+aello bornfortais
+
+进程已结束，退出代码为 0
+```
+
+结果发现：示例1的修改无法进行，而示例2的修改可以进行
+
+原因就在于字符串的不可变性
+
+实际上，示例1和2的修改原理并不相同，示例1是直接修改字符串内容，而示例2是在原字符串的基础上再**创建一个新的字符串，而对原来字符串无改变**
+
+## 8. 字符串的转义
+
+`\`是转义符号
+
+| 转义字符 | 含义                              | 例子                     |
+| -------- | --------------------------------- | ------------------------ |
+| `\\`     | 反斜杠符号，为了在字符串中得到`\` | `s = "bor\\nforthis"`    |
+| `\b`     | 退格，类似删除键                  | `s= "bornff\bornthis"`   |
+| `\n`     | 换行                              | `s = "bornfor\nthis"`    |
+| `\t`     | 制表符（tab）                     | `s = "born\tfor\tthis"`  |
+| `r`      | 取消转义                          | `s = r"born\tfor\tthis"` |
+
+示例1: `\\`
+
+```python
+# \\: 反斜杠本身（因为\本身是转义符，所以如果想在字符串中保留\,则需要使用）
+s = "bor\\nforthis"
+print(s)
+```
+
+结果为:
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+bor\nforthis
+
+进程已结束，退出代码为 0
+```
+
+示例2：`\t`
+
+```python
+# \t: 制表符（Tab 键效果）
+s = "born\tfor\tthis"
+print(s)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+born	for	this
+
+进程已结束，退出代码为 0
+```
+
+这里前面空格多一点是bug
+
+示例3：`\b`
+
+```python
+# \b: 退格(类似删除键）(backspace)
+s = "bornff\borthis"
+print(s)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+bornforthis
+
+进程已结束，退出代码为 0
+```
+
+那么既然我们都有backspace这个键
+
+这个`\b`有什么用呢
+
+试想：我们要制作一个网站，所以登陆的账号用户名必须满足一定的需求（比如字数不超过12个字），那利用`\b`自动识别并删除超过12字符的字符，就是一个很通用的方法，这时候就无法手打backspace键了
+
+> **注意**：任意转义字符都能互相连用，当`\b`连用的时候，它会根据自身数量来删除等同于自身数量的左侧字符,自身数量超过左侧字符数量也不会报错
+
+示例3: `\n` 换行符
+
+```python
+s = "bornf\northis"
+print(s)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+bornf
+orthis
+
+进程已结束，退出代码为 0
+```
+
+ 示例4: `\'`
+
+```python
+# \':单引号（在单引号字符串中，保留引号）
+s = 'bornf\'orthis'
+print(s)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+bornf'orthis
+
+进程已结束，退出代码为 0
+```
+
+示例5: `\"`
+
+```python
+# \":双引号（在双引号字符串中，保留引号）
+s = "bornf\"orthis"
+print(s)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+bornf"orthis
+
+进程已结束，退出代码为 0
+```
+
