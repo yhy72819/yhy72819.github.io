@@ -2014,6 +2014,8 @@ aello bornfortais
 
 ## 8. 字符串的转义
 
+### 8.1 转义
+
 `\`是转义符号
 
 | 转义字符 | 含义                              | 例子                     |
@@ -2136,3 +2138,186 @@ bornf"orthis
 进程已结束，退出代码为 0
 ```
 
+### 8.2 去转义：r
+
+在输入字符串内容的时候，如果我们真的需要 \b 这一字符，而非让它发挥其转义的作用，我们就需要去转义符号r的参与
+
+示例：
+
+```python
+print(r"Hello\nBornforthis.cn")  # 大写 R 也可以
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+Hello\nBornforthis.cn
+
+进程已结束，退出代码为 0
+```
+
+## 9. 字符串的连接
+
+### 9.1 `+`
+
+示例：
+
+```python
+s1 = 'born'
+s2 = 'forthis.cn'
+print(s1 + s2) # 连接成一个新的字符串，中间无间隔
+print(s1, s2)  # 同时输出两个字符串，中间会有一个空格的间隔
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+bornforthis.cn
+born forthis.cn
+
+进程已结束，退出代码为 0
+```
+
+### 9.2 `*`
+
+示例：
+
+```python
+s1 = '*-love-'
+print(s1 * 10)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+*-love-*-love-*-love-*-love-*-love-*-love-*-love-*-love-*-love-*-love-
+
+进程已结束，退出代码为 0
+```
+
+注意字符串没有减号，因为字符串不能减去字符串
+
+同时字符串的`+`与`*`可以混用
+
+## 10 读取用户输入
+
+### 10.1 input() 基本使用
+
+```python
+# TODO ： 在 Python 中 input 用于获取用户输入
+user_input = input()
+print(user_input)
+```
+
+输出这一段代码后输出框便可输入内容，输入内容后便可按内容输出结果(按回车即可输出)
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+1
+1
+
+进程已结束，退出代码为 0
+```
+
+但这样用户无法了解要做什么，于是我们可以在input()内添加一定的内容
+
+```python
+# TODO ： 在 Python 中 input 用于获取用户输入
+user_input = input("请输入一些内容：")
+print(user_input)
+```
+
+这样就可以出现：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+请输入一些内容：
+```
+
+输入后就是：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+请输入一些内容：1
+1
+
+进程已结束，退出代码为 0
+```
+
+### 10.2 input 结果代码性质
+
+```python
+
+In [3]: type(input(':>>>')) # 使用 type 检测 input 获取用户输入之后的数据类型
+:>>>bornforthis
+Out[3]: str
+
+In [4]:  type(input(':>>>'))
+:>>>12
+Out[4]: str
+
+In [5]:  type(input(':>>>'))
+:>>>12.1
+Out[5]: str
+
+In [6]:  type(input(':>>>'))
+:>>>[1,2,3,4,5]
+Out[6]: str
+
+In [7]:  type(input(':>>>'))
+:>>>(1,2,3,4,5)
+Out[7]: str
+
+In [8]:  type(input(':>>>'))
+:>>>{1,2,3,4,5}
+Out[8]: str
+```
+
+发现：无论输入什么类型的代码，只要是input，那代码类型都是str
+
+那么，有什么方法来转换其代码类型呢
+
+#### 10.2.1 强制类型转换
+
+示例：
+
+```python
+In [10]: n = int(input(':>>>'))
+:>>>12
+
+In [11]: type(n)
+Out[11]: int
+```
+
+直接令input为int就能让其输出结果为int
+
+但是强制类型转换会使输入内容的每一个字符都转换成目标代码的元素
+
+```python
+In [12]: n = list(input(':>>>'))
+:>>>12
+
+In [13]: n
+Out[13]: ['1', '2']
+```
+
+发现输入的12中的1，2都变成了列表的独立元素
+
+因此就会出现：
+
+```python
+In [14]: n = list(input(':>>>'))
+:>>>[1,2,3,4,5]
+
+In [15]: n
+Out[15]: ['[', '1', ',', '2', ',', '3', ',', '4', ',', '5', ']']
+```
+
+这样的bug
+
+列表中的每一个字符都变成了新元素,且每个元素都是字符串的形式
+
+通过反复测试，我们发现：强制转换为数字型时在输入不为数字的时候无法进行，强制转换为集合、列表、元组时会出现以上情况，强制转换为字符串时完全能正常运行，强制转换为集合时由于其键值对的特殊性质，运行会发生报错,强制转换为布尔型时仅在无任何输入时显示False，其它情况均输出True,强制转换为`None`时会直接报错
