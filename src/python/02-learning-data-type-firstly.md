@@ -525,6 +525,8 @@ False
 
 任意输出任何一个合法存在的对象的布尔型结果都是True
 
+![738e7c15d8332005076b227beeef2589](./02-learning-data-type-firstly.assets/738e7c15d8332005076b227beeef2589.jpg)
+
 ## 9. None
 
 None可以独立做一个代码类型
