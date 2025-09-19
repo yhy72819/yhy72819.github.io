@@ -55,6 +55,10 @@ export default hopeTheme({
         hint: "",
         password: "12345678a",
       },
+      "/python/task/task1.html": {
+      hint: "",
+      password: "bornforthis"
+      },
     },
   },
 
