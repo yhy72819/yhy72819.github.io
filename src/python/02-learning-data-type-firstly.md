@@ -273,6 +273,22 @@ Process finished with exit code 0
 
 3. 任意数据类型：同列表
 
+> 注意：当你同时给一个变量赋多个值的时候，输出结果即为元组
+
+```python
+u = 1,2,3
+print(u)
+```
+
+ 结果即为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+(1, 2, 3)
+
+Process finished with exit code 0
+```
+
 ## 5. 探究： 列表&元组
 
 ::: important 为什么有列表后，还需要元组
