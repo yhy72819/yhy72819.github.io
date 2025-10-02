@@ -1602,7 +1602,90 @@ Process finished with exit code 0
 
 注意：split函数的对象只能是字符串
 
-###   5.22 练习
+```pyhton
+string = "ai-bornforthis-love"
+split_result = string.split('-')
+print("原本",string)
+print("分割后",split_result)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+原本 ai-bornforthis-love
+分割后 ['ai', 'bornforthis', 'love']
+
+Process finished with exit code 0
+
+```
+
+```python
+string = "ai-bornforthis-love"
+split_result = string.split('-',1)
+print("原本",string)
+print("分割后",split_result)
+```
+
+ 结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/06.py 
+原本 ai-bornforthis-love
+分割后 ['ai', 'bornforthis-love']
+
+Process finished with exit code 0
+
+```
+
+可是存在问题，当间隔字符数为连续多个或不对等的情况下，split又会如何间隔呢？
+
+当默认空格时：
+
+```python
+s = "ai  bornforthis  ai   book"
+new_s = s.split()
+print(new_s)
+```
+
+结果一切正常：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+['ai', 'bornforthis', 'ai', 'book']
+
+Process finished with exit code 0
+```
+
+但是，一旦输入sep字符，就会出现问题：
+
+```python
+s = "ai  bornforthis  ai   book"
+new_s = s.split(" ")
+print(new_s)
+```
+
+结果变成了：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+['ai', '', 'bornforthis', '', 'ai', '', '', 'book']
+
+Process finished with exit code 0
+
+```
+
+原因是:
+
+split函数分割的原理是识别每个分割字符的位置，再将每一个被夹在分割字符之间或处于两边（如 ai 和 book ）的字符作为一个新元素放入列表之中，当分割字符连续时，也就是说分割字符中间没有夹着其它字符，python仍然会创建一个新元素，只不过由于没有内容，所以是个空字符串。
+
+至于默认sep情况，这是一种优化，自动去除了这种问题的影响
+
+### 5.21.extra rsplit函数
+
+同上的rstrip ，rsplit即为从右往左览索，在maxsplit限定次数时优先右侧分割
+
+### 5.22 练习
 
 ![0bd33036b7e24480de10e277832aeb2c](./04-string.assets/0bd33036b7e24480de10e277832aeb2c.png)
 
@@ -2500,3 +2583,21 @@ string仍属于python语法，可以进行处理与消除，这就使得程序�
 ## 11. 小试牛刀
 
 ![70baae407b9ebf3917c8e8607e762889](./04-string.assets/70baae407b9ebf3917c8e8607e762889.png)
+
+![eb600bcd7374a90ee53260791ef2b1a4](./04-string.assets/eb600bcd7374a90ee53260791ef2b1a4.png)
+
+解决方法：
+
+```python
+a = input("请输入你的姓名：")
+b = input("请输入你的性别：")
+c = input("请输入你的年龄：")
+d = input("请输入你的学校：")
+print("正在生成你的简历......")
+print("*"*19)
+print("\t简历")
+print("姓名:",a)
+print("性别:",b)
+print("年龄:",c)
+print("毕业学校:",d)
+```

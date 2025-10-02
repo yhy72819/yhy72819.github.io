@@ -430,3 +430,165 @@ match 表达式:
 ![image-20250925160027232](./03-numeric-type.assets/image-20250925160027232.png)
 
 本质上，这种语法是从上而下检索，而`__`实际上是任意结果都会匹配的符号，所以`__`一定要放最后一个case，不然会报错
+
+## 11. 连续执行符：while（循环结构）
+
+对比一下两个示例：
+
+```python
+i = 1
+if i<=10:
+    i += 1
+print(i)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/06.py 
+2
+
+Process finished with exit code 0
+
+```
+
+
+
+```python
+i = 1
+while i<=10:
+    i += 1
+print(i)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/06.py 
+11
+
+Process finished with exit code 0
+
+```
+
+对比发现：if函数只会单次执行命令，而while函数则是只要执行命令后的`i`仍然符合条件(即 i<=10 ),重复执行命令直至`i`不再满足条件
+
+非常有趣的是，如果循环永不停止，python不会输出任何结果，但输出界面不再无法修改，而是可以任意输入字符了
+
+构造无限循环的**万金油**：`while True:`当条件为True时，即任意情况一定满足，就可以达到无限循环了
+
+## 12. Range()
+
+range函数表示范围
+
+括号内按正常的区间格式填写：
+
+注意：range区间内只包含整数,且默认左闭右开
+
+```python
+print(list(range(0,5)))
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/06.py 
+[0, 1, 2, 3, 4]
+
+Process finished with exit code 0
+```
+
+![image-20250930162300792](./03-numeric-type.assets/image-20250930162300792.png)![image-20250930162300955](./03-numeric-type.assets/image-20250930162300955.png)
+
+
+
+其中：步长默认为1，初始值默认为0
+
+## 13. For-in 循环
+
+```python
+for i in 'python':
+ print(i)
+```
+
+执行以上代码：
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/06.py 
+p
+y
+t
+h
+o
+n
+
+Process finished with exit code 0
+
+```
+
+我们发现：输出i时会依次输出in右侧的所有字符（除了决定性质的字符）
+
+我们换一种代码形式试试：
+
+```python
+for i in [1,2,3,4,5,6,7,8]:
+ print("输出:",i)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/06.py 
+输出: 1
+输出: 2
+输出: 3
+输出: 4
+输出: 5
+输出: 6
+输出: 7
+输出: 8
+
+Process finished with exit code 0
+
+```
+
+也就是说：
+
+for 右侧的字符会自动被依次赋值为 in 右侧的代码字符，在输出结果时，就会出现这种依次输出的循环执行效果（此处的循环指的是不断重复相同的赋值过程）
+
+> **注**：这种循环用不了 True 来构造无限循环
+
+## 14. break函数
+
+break函数能破坏一切循环的发生
+
+```python
+for letter in 'Python':     # 第一个实例
+   if letter == 'h':
+      break
+   print '当前字母 :', letter
+  
+var = 10                    # 第二个实例
+while var > 0:              
+   print '当前变量值 :', var
+   var = var -1
+   if var == 5:   # 当变量 var 等于 5 时退出循环
+      break
+ 
+print "Good bye!"
+```
+
+输出结果为：
+
+```python
+当前字母 : P
+当前字母 : y
+当前字母 : t
+当前变量值 : 10
+当前变量值 : 9
+当前变量值 : 8
+当前变量值 : 7
+当前变量值 : 6
+Good bye!
+```
+
+我们发现，当满足break触发条件时，会直接中断循环
