@@ -477,6 +477,28 @@ Process finished with exit code 0
 
 构造无限循环的**万金油**：`while True:`当条件为True时，即任意情况一定满足，就可以达到无限循环了
 
+> 与 if 相同的是，while 也可以搭配 else 使用
+>
+> ```python
+> a = 1
+> while a<=10:
+>     a+=1
+> else:
+>     print("a =",a)
+> ```
+>
+> 结果一定为：
+>
+> ```python
+> /Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/06.py 
+> a = 11
+> 
+> Process finished with exit code 0
+> 
+> ```
+>
+> 只要 while 循环不是无限，就一定能输出else的结果
+
 ## 12. Range()
 
 range函数表示范围
