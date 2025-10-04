@@ -1,10 +1,12 @@
 ---
-title:lab4
+title: lab4
 icon: blog
 date: 2025-10-04 21:07:10
-author:yhy
+author: yhy
 category:
+    - task
 tag:
+    - task
 isOriginal: true
 sticky: false
 star: false
