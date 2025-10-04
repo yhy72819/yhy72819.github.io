@@ -1602,7 +1602,7 @@ Process finished with exit code 0
 
 注意：split函数的对象只能是字符串
 
-```pyhton
+```python
 string = "ai-bornforthis-love"
 split_result = string.split('-')
 print("原本",string)
