@@ -244,6 +244,8 @@ print(x // y)
 
 2
 
+## 综上：优先级 算术运算符>比较运算符>逻辑运算符
+
 ## 8. Float,int 和 complex 函数
 
 ### 8.1 Float()
@@ -393,6 +395,32 @@ else:
 ![image-20250923161451161](./03-numeric-type.assets/image-20250923161451161.png)
 
 注意这里用的都是运算符号，千万不要用`=`赋值符号
+
+另外：if-else还有一种表达方式：
+
+```python
+n = 5
+s = "hello" if n==5 else "Okay"
+print(s)
+```
+
+这种方式专门作用于赋值符号右侧的一次性表达
+
+格式为：
+
+```python
+s = 'content1' if 条件 else 'content2'
+```
+
+这种表达一般不用elif
+
+复杂表达可为：
+
+```python
+n=100
+s = 1 if n==1 else 2 if n==2 else 3
+print(s)
+```
 
 ## 10. 判断的优化-match-case
 
