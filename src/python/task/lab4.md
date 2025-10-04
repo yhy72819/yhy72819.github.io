@@ -66,13 +66,17 @@ If you have any questions regarding the problem statement, please post a questio
 
 #### More Examples
 
-More examples (click to expand):
+Scenario 1:
 
-<details style="box-sizing: border-box;"><summary style="box-sizing: border-box; display: list-item; cursor: pointer;">Scenario 1</summary><img class="sample-figure" src="https://course.cse.ust.hk/comp1023/labs/lab4/images/example1.png" alt="example1" style="box-sizing: border-box; vertical-align: middle; border-style: none; margin: 0.5rem 39.1484px; width: 500px; max-width: 500px;"><p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 0.5rem;">=&gt; lift 1 will pick them up</p></details>
+<img src="./lab4.assets/example1-20251004212922206.png" alt="example1" style="zoom:50%;" />
 
-<details style="box-sizing: border-box;"><summary style="box-sizing: border-box; display: list-item; cursor: pointer;">Scenario 2</summary><img class="sample-figure" src="https://course.cse.ust.hk/comp1023/labs/lab4/images/example2.png" alt="example2" style="box-sizing: border-box; vertical-align: middle; border-style: none; margin: 0.5rem 39.1484px; width: 500px; max-width: 500px;"><p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 0.5rem;">=&gt; lift 2 will pick them up</p></details>
+Scenario 2:
 
-<details style="box-sizing: border-box;"><summary style="box-sizing: border-box; display: list-item; cursor: pointer;">Scenario 3</summary><img class="sample-figure" src="https://course.cse.ust.hk/comp1023/labs/lab4/images/example3.png" alt="example3" style="box-sizing: border-box; vertical-align: middle; border-style: none; margin: 0.5rem 39.1484px; width: 500px; max-width: 500px;"><p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 0.5rem;">=&gt; lift 3 will pick them up</p></details>
+<img src="./lab4.assets/example2.png" alt="example2" style="zoom:50%;" />
+
+Scenario 3:
+
+<img src="./lab4.assets/example3.png" alt="example3" style="zoom:50%;" />
 
 #### Hints
 
