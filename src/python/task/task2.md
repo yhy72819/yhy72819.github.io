@@ -22,6 +22,114 @@ backToTop: true
 toc: true
 ---
 
+### Introduction
+
+In this assignment, you will make use of Python programming to implement a simple game called 1023 Game. The game is inspired by both the [2048 game](https://en.wikipedia.org/wiki/2048_(video_game)) and the [Tetris game](https://en.wikipedia.org/wiki/Tetris).
+
+#### Piece
+
+![Piece](./task2.assets/piece.png)
+
+In the 1023 Game, a piece is a connected group of 4 blocks, just like the Tetris game. There are 7 types of pieces in our game. The player can control the movement of each piece. More information about the movement in the "Gameplay" section.
+
+#### Block
+
+![Block](./task2.assets/block.png)
+
+A block is the smallest unit in the 1023 Game. Each block has a value of 1, 3, 7, 15, ..., 1023 (each number is two times the previous number plus one: 3 = 2*1 + 1, 7 = 2*3 +1 ...). The values can be changed through merging when a block stacks on top of another block of equal value. More information about the merging rule is in the "Gameplay" section.
+
+#### Movement
+
+Before we start implementing the game, let's first understand the gameplay of the 1023 Game. As shown in the screenshot below, this game is played on a 20x6 grid. The player can move the pieces left, right, down, or rotate them. The player can also drop the piece to the bottom of the grid.
+
+A proposed move is considered valid if none of the blocks of the piece move into the position of another block already on the grid (no overlapping blocks) or is out of bounds. If the move is considered invalid, the move will be ignored, and nothing happens. Some important rules about the movement of the piece:
+
+1. The blocks do not fall automatically. That is, unlike Tetris, if the player does nothing, the piece will stay at the original position.
+2. The pieces can be moved with the 'a', 's', 'd' keys on the keyboard. In the graphical user interface (GUI) mode of the game, controlling with the arrow keys is also possible. The 'w' key and the up arrow key are used for rotating the piece. Pieces do not move upwards.
+3. Press the space bar on the keyboard to drop the piece to the bottom of the grid. When blocks of equal value stack vertically, they merge. Unlike Tetris, gravity (dropping down) is applied to each block individually, not to the entire piece as a whole. ![Drop](./task2.assets/drop.png)
+4. Since pieces will not fall automatically, the player has to press the space bar to drop the piece and continue the game. Even if the piece is already at the bottom, the space bar still needs to be pressed to proceed to the next piece.
+
+
+
+#### Merging
+
+In this game, we have a special rule for merging blocks. When two blocks of equal values are stacked vertically, they will merge into a new block. The value of the new block is the sum of the values of the two blocks plus 1. After merging, the two blocks are replaced with the new block (with a value equal to two times the original value plus one) at the position of the lower block. For example, when two blocks of 15 are stacked, they will merge into a block of 31 (= 15 + 15 + 1) at the position of the lower block (higher row index number). **The result is \**NOT\** directly adding the values of the two blocks.**
+
+One special case is that when there are multiple blocks of equal value stacked together, the pair of blocks closest to the bottom will be merged first. Refer to the example below for a better understanding. ![Merge](./task2.assets/merge.png)
+
+#### Gameplay
+
+The game starts with an empty grid. The game will keep generating new pieces with 4 blocks, each with a value randomly chosen from `[1, 3, 7, 15, 31, 63, 127, 255]`. The player can move the piece or drop the piece, and the game proceeds with the mechanics specified above.
+
+The goal of the player is to create a block with a value of 1023 through merging, and if they do so before losing the game, they win.
+
+The game will end when the player reaches the goal (has a block with a value of 1023) or any block **touches** the red limit line of the grid (that is, if there is any block in the top five rows) after merging checking, and all blocks of the current piece have fallen. If any block touches the line after the block merging process, the game ends, and the player loses. The limit line is represented by the red line in the images above. You can also observe the red limit line when you run your game. An example of a game lost is shown below.
+
+![Game lost](./task2.assets/lose.png)
+
+An example game play video recording is shown below.
+
+#### Technical Details
+
+In this section, we will provide some technical details about the game implementation.
+
+1. **Game board**: The game board is a 20x6 grid, and will be stored as a 2D list of values. A cell is referenced in the list as `game_board[row_number][col_number]`. Each cell contains a block value that can be used for merging. In this game, possible beginning block values are either `1 or 3 or 7 or 15 or 31 or 63 or 127 or 255`. Also, in this assignment, we will be following Python's convention of 0-based indexing.
+
+    For easier implementation, the game board will **NOT** store data of the floating piece.
+
+    For example, in the example below, we have `game_board[18][1] = 127`, but `game_board[6][2] = 0`.
+
+    
+
+2. **Piece shape and location**: The shapes of the pieces are stored in the list `shapes` (initialization is contained in the top portion of the provided skeleton program), accessed using `shapes[piece_number][rotation_number][block_number][dimension]`. Each element in the 4D list is an `int`, the row or column offset of the block.
+
+    For example, `shapes[6][3] = [[0, 2], [-1, 1], [0, 1], [1, 1]]`, 6 corresponds to the T-shaped piece (shape 6), and 3 means the piece is rotated 3 times. The offsets of the first block (block 0) are `[0, 2]`. This means that the first block is at the same row as the piece's location (each piece has an anchor location), and 2 columns to the right of the piece's location.
+
+    The location of a piece is stored as a pair of integers, the row and column of the piece, in a list of two integers `[r, c]`. It is the reference point for the blocks of the piece. The location of the piece itself may overlap with other blocks, or even outside the grid. When a piece is moved, the location of the piece is updated, and the new location is used to calculate the new position of the blocks using the offsets. All pieces start at position `[0, 1]` (row index: 0 and column index: 1).
+
+    An example is provided here for better understanding (shape 6 rotation 3).
+
+    
+
+    Suppose we want to calculate the position of the third block (block number 2) of the piece (shape number 6, rotation number 3). We can get the row offset by `shapes[6][3][2][0]`, which should be 0, and the column offset by `shapes[6][3][2][1]`, which should be 1. These offsets are then added to the piece's position at [row 9, column 1] to get the position of the block [row 9 + 0, column 1 + 1] = [row 9, column 2] or position [9, 2].
+
+    Consider the piece `shapes[6][3][2][1]`.
+
+    - The first index (piece_number) `6` indicates the piece shape. Shape number 6 corresponds to the T-shaped piece.
+    - The second index (rotation_number) `3` indicates that the piece is rotated 3 times.
+    - The third index (block_number) `2` indicates block number 2 of the piece.
+    - The fourth index (dimension) `1` indicates the column offset of the block. Index of `0` contains the row offset instead. The dimension index is always either `0` (for row) or `1` (for column).
+
+3. 
+
+4. **Rotation**: The player can rotate the piece using the 'w' key or the up arrow key. The rotation is stored with an integer indicating the number of 90-degree rotations performed. However, in order to keep the numbers small and stop them from growing indefinitely, the rotation number is kept as `0 or 1 or 2 or 3`. After 3 rotations, if the player rotates the piece again, the rotation number will be reset to 0, since the piece returns to its original orientation.
+
+5. 
+
+6. **CLI and GUI**: We provide two versions of the game, one is the command-line interface (CLI), which is a text-based version of the game, using input statements and print statements to control the pieces' movement and show the current status. You can launch the CLI version by running the `cli.py` file.
+
+    Another version is the graphical user interface (GUI) version, which is a more user-friendly version with graphics displayed on the screen. You can launch the GUI version by running the `gui.py` file. All examples above are based on the GUI version.
+
+    In this assignment, you **only** have to implement the game logic in `game.py`.
+
+    `cli.py` and `gui.py` are provided to you. Feel free to modify `cli.py` and `gui.py` if you want to improve the user experience. **However, you should make sure your game can be played normally when it is run with the unmodified code provided in the skeleton code.**
+
+    Some of you may find it easier to debug using the CLI version since you are more familiar with the code structure and language features like `input()` and `print()`, and some of you may find it easier to use the GUI since you can better visualize the effect of the code. It does not matter whether you use the CLI or GUI version to debug or run your code. After you have implemented the game logic, the game should be able to run normally in both versions.
+
+#### How to Start
+
+To begin your implementation:
+
+1. Make sure VS Code and Python 3.13.5 are both installed and set up (see [lab 1](https://course.cse.ust.hk/comp1023/labs/lab1) for the details) on your computer.
+2. Download the whole zipped package for this assignment [here](https://course.cse.ust.hk/comp1023/assignments/pa1/skeleton.zip).
+3. Unzip the zip file into a directory. You should be able to see the directory "pa1" after unzipping. Open the directory "pa1" using VS Code (i.e., "File"->"Open Folder...").
+4. You should be able to see in the "EXPLORER" window of VS Code the files in the folder. There is the `game.py` file with Tasks that you need to work on. Modify only the `game.py` file - do not change any part of the `cli.py` and `gui.py` files!
+5. Implement the tasks in the `game.py` file according to the comments in the file and the description in the ["Description"](https://course.cse.ust.hk/comp1023/assignments/pa1/#description) part below. If you want to see whether you have implemented the tasks correctly, you can choose the **`cli.py`** file or **`gui.py`** under VS Code and then click the "run" button. If you run cli.py, the plain text mode is run. If you run gui.py, the GUI mode is run. The only difference between these two modes is in the way the 1023 game is displayed (text mode vs GUI mode). Before you have finished with the correct implementation of the tasks in the `game.py` file, it is normal to see error messages.
+6. After implementing each Task, you could **run `cli.py` or `gui.py`** and see if that task has been implemented correctly. Repeat this for all the Tasks until you have implemented them all correctly.
+7. **Do not run `game.py`, it will show you nothing!**
+
+If you have any questions regarding the programming assignment, such as needing clarification on the requirements, please post your inquiries on the course Piazza (https://piazza.com/ust.hk/fall2025/comp1023l01l10/home). However, please refrain from posting your code to prevent other students from copying it, which could lead to issues of plagiarism.
+
 ### Description
 
 The following are tasks of the assignment. Please go through the tasks in the order listed. There are **more specific requirements in the comments of the relevant functions in the skeleton code**. This description is provided to give you a general overview of each function.
