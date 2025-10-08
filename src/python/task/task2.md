@@ -237,7 +237,12 @@ def gravity_and_merge(game_board):
 There are two sets of actions in this task: gravity and merging:
 
 - **Gravity**
+
+    Gravity refers to moving blocks of the "floating" piece (with empty cells below) to the empty cell (largest row number) closest to the game board's bottom.
+
 - **Merging**
+
+    Merging is described in the section headed "Introduction" above. Merging is performed from bottom up, not top down.
 
 
 
