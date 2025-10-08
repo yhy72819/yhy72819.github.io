@@ -100,13 +100,9 @@ In this section, we will provide some technical details about the game implement
     - The third index (block_number) `2` indicates block number 2 of the piece.
     - The fourth index (dimension) `1` indicates the column offset of the block. Index of `0` contains the row offset instead. The dimension index is always either `0` (for row) or `1` (for column).
 
-3. 
+3. **Rotation**: The player can rotate the piece using the 'w' key or the up arrow key. The rotation is stored with an integer indicating the number of 90-degree rotations performed. However, in order to keep the numbers small and stop them from growing indefinitely, the rotation number is kept as `0 or 1 or 2 or 3`. After 3 rotations, if the player rotates the piece again, the rotation number will be reset to 0, since the piece returns to its original orientation.
 
-4. **Rotation**: The player can rotate the piece using the 'w' key or the up arrow key. The rotation is stored with an integer indicating the number of 90-degree rotations performed. However, in order to keep the numbers small and stop them from growing indefinitely, the rotation number is kept as `0 or 1 or 2 or 3`. After 3 rotations, if the player rotates the piece again, the rotation number will be reset to 0, since the piece returns to its original orientation.
-
-5. 
-
-6. **CLI and GUI**: We provide two versions of the game, one is the command-line interface (CLI), which is a text-based version of the game, using input statements and print statements to control the pieces' movement and show the current status. You can launch the CLI version by running the `cli.py` file.
+4. **CLI and GUI**: We provide two versions of the game, one is the command-line interface (CLI), which is a text-based version of the game, using input statements and print statements to control the pieces' movement and show the current status. You can launch the CLI version by running the `cli.py` file.
 
     Another version is the graphical user interface (GUI) version, which is a more user-friendly version with graphics displayed on the screen. You can launch the GUI version by running the `gui.py` file. All examples above are based on the GUI version.
 
