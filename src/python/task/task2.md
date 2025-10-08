@@ -79,7 +79,7 @@ In this section, we will provide some technical details about the game implement
 
     For example, in the example below, we have `game_board[18][1] = 127`, but `game_board[6][2] = 0`.
 
-    
+    ![Board](./task2.assets/gameboard.png)
 
 2. **Piece shape and location**: The shapes of the pieces are stored in the list `shapes` (initialization is contained in the top portion of the provided skeleton program), accessed using `shapes[piece_number][rotation_number][block_number][dimension]`. Each element in the 4D list is an `int`, the row or column offset of the block.
 
@@ -89,7 +89,7 @@ In this section, we will provide some technical details about the game implement
 
     An example is provided here for better understanding (shape 6 rotation 3).
 
-    
+    ![Piece Shape](./task2.assets/shapes_new.png)
 
     Suppose we want to calculate the position of the third block (block number 2) of the piece (shape number 6, rotation number 3). We can get the row offset by `shapes[6][3][2][0]`, which should be 0, and the column offset by `shapes[6][3][2][1]`, which should be 1. These offsets are then added to the piece's position at [row 9, column 1] to get the position of the block [row 9 + 0, column 1 + 1] = [row 9, column 2] or position [9, 2].
 
