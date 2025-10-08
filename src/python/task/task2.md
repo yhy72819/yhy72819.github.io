@@ -36,7 +36,7 @@ In the 1023 Game, a piece is a connected group of 4 blocks, just like the Tetris
 
 ![Block](./task2.assets/block.png)
 
-A block is the smallest unit in the 1023 Game. Each block has a value of 1, 3, 7, 15, ..., 1023 (each number is two times the previous number plus one: 3 = 2*1 + 1, 7 = 2*3 +1 ...). The values can be changed through merging when a block stacks on top of another block of equal value. More information about the merging rule is in the "Gameplay" section.
+A block is the smallest unit in the 1023 Game. Each block has a value of 1, 3, 7, 15, ..., 1023 (each number is two times the previous number plus one: $3 = 2*1 + 1$, $7 = 2*3 +1$ ...). The values can be changed through merging when a block stacks on top of another block of equal value. More information about the merging rule is in the "Gameplay" section.
 
 #### Movement
 
