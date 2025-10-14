@@ -482,7 +482,7 @@ Process finished with exit code 0
 
 
 
-```python
+```s python
 i = 1
 while i<=10:
     i += 1
@@ -642,3 +642,57 @@ Good bye!
 ```
 
 我们发现，当满足break触发条件时，会直接中断循环
+
+## 15. continue
+
+与break在同一区域使用，表示继续循环，而不执行以下命令，一般用于在一定范围内圈出更小的范围不做执行下述命令
+
+```python
+for i in range(5):
+    if i == 3:
+        continue
+    print(i,end=' ')
+```
+
+结果就是：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+0 1 2 4 
+Process finished with exit code 0
+```
+
+3不再执行以下命令
+
+## 16 center居中
+
+格式：`.center(总长，填充符号)`
+
+## 17.sum 函数
+
+用于存在多个元素的代码类型中数字型的加合，但只要存在非数字型元素，就会报错
+
+## 18 max 和 min 函数
+
+max和min用于提取一行代码中最大的值
+
+注意：值的判定是与索引相关的，因此max和min函数可以作用于字符串，但不能作用于数字型
+
+在列表类的代码中，当且仅当内部所有元素都为一类代码类型时才不会报错，如果内部的代码类型也是列表类的代码，那么会从元素中的第一个值进行比较，如果都相等，那就比第二个值，以此类推
+
+```python
+a = [(1,2,4),(1,2,3,4,5)]
+print(max(a))
+```
+
+结果即为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/05.py 
+(1, 2, 4)
+
+Process finished with exit code 0
+
+```
+
+> 另：字符串中可以存在不同类型的字符，遵循特殊字符>字母>数字，字母按照字母表顺序比较大小（s>a)
