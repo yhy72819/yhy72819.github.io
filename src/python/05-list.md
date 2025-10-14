@@ -334,3 +334,37 @@ print('after:',numbers)
 结果就会报错
 
 经过测试：我们发现：元组，列表，字符串,集合,字典均可以替换元素
+
+## 8. append()
+
+append 函数是专门对于列表的函数，用于在列表最后直接添加一个元素，但注意是直接对原列表修改，而不是创造一个新列表
+
+因此，值得注意的是：
+
+![image-20251014160855132](./05-list.assets/image-20251014160855132.png)
+
+甚至可以直接：
+
+```python
+a = [1,2,3]
+a.append(1)
+print(a)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/05.py 
+[1, 2, 3, 1]
+
+Process finished with exit code 0
+
+```
+
+## 9. shallow copy 和 deep copy
+
+![image-20251014162133104](./05-list.assets/image-20251014162133104.png)
+
+复制分类：
+
+![image-20251014162059092](./05-list.assets/image-20251014162059092.png)
