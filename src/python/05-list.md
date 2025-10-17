@@ -361,10 +361,25 @@ Process finished with exit code 0
 
 ```
 
-## 9. shallow copy 和 deep copy
+## 9.  vbcshallow copy 和 deep copy
 
 ![image-20251014162133104](./05-list.assets/image-20251014162133104.png)
 
 复制分类：
 
 ![image-20251014162059092](./05-list.assets/image-20251014162059092.png)
+
+值得注意的是，当改变的元素为不可变类型时，shallow 和 deep 没有区别，都是不会影响源代码
+
+但当改变的元素为可变类型时，sallow开始与deep存在上述区别
+
+当不可变类型时：
+
+![image-20251016155138425](./05-list.assets/image-20251016155138425.png)
+
+当为可变类型时：
+
+![image-20251016155241601](./05-list.assets/image-20251016155241601.png)
+
+
+

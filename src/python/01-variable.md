@@ -341,6 +341,22 @@ print(b,a)
 
 > **注**：print 前不能放空格，在python中空格是有意义的
 
+::: important
+
+Return 也是一种返还结果的方法，其形式为：
+
+```python
+return 变量
+```
+
+注意：return 返还函数，但不显示输出结果，而print只显示结果，不生成实际的代码函数
+
+同时：return生效时，会直接停止此段代码的执行，同一个def 文件后面的所有代码都不会执行
+
+![image-20251015233739913](./01-variable.assets/image-20251015233739913.png)
+
+:::
+
 ## 4. 进阶的赋值方法
 
 以往我们想把多个变量赋予相同的值，只能如下操作
@@ -485,3 +501,37 @@ Process finished with exit code 0
 
 区分大小写得证
 
+## 6. 临时调用变量
+
+我们知道：变量在赋值之前一般无法调用，但def函数则使得能生成临时的未赋值可调用变量，且该变量可随时在后台赋值以解除其临时性。
+
+```python
+def is_valid_move(game_board, current_shape, current_location, current_rotation):
+```
+
+此时括号内的变量即可直接调用
+
+注意：此时未赋值的变量仍然无法正常运行，仅仅可以调用，只有后台赋值后才可正常运行
+
+## 7. 创造函数
+
+对于def函数，其可以直接给予其右侧的变量（is_valid_move)给予函数的意义，方式为创造一个独立的区域（即def is_valid_move)部分，一般结尾标识为：`if_name_=='_变量_'`表示，也可以用`return`取代，这中间的所有代码就是该函数的执行区域，在此之后，任何调用该变量的时候都会执行一次此段区域的代码，故在此之后可直接将此变量当作函数对待。
+
+示例：
+
+```python
+def a(n: int):
+    return n*n
+print(a(168))
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/05.py 
+28224
+
+Process finished with exit code 0
+```
+
+注意到在此时直接使用 `a()`可以直接调用 a 函数了

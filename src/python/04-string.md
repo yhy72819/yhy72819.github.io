@@ -1031,7 +1031,7 @@ print(index_result)
 结果为：
 
 ```python
-/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01 .py 
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/01 .py d
 Traceback (most recent call last):
   File "/Users/yhy/Coder/experiment/01 .py", line 2, in <module>
     index_result = string.index('aivc')
@@ -2436,7 +2436,24 @@ Out[15]: ['[', '1', ',', '2', ',', '3', ',', '4', ',', '5', ']']
 
 列表中的每一个字符都变成了新元素,且每个元素都是字符串的形式
 
-通过反复测试，我们发现：强制转换为数字型时在输入不为数字的时候无法进行，强制转换为集合、列表、元组时会出现以上情况，强制转换为字符串时完全能正常运行，强制转换为集合时由于其键值对的特殊性质，运行会发生报错,强制转换为布尔型时仅在无任何输入时显示False，其它情况均输出True,强制转换为`None`时会直接报错
+但值得注意的是，仅当字符串转换为列表等会出现这种情况，列表转列表，列表转元组等元素分隔的代码类型之间的互相转换是正常的
+
+```python
+a = [[1,2],3]
+print(tuple(a))
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/03.py 
+([1, 2], 3)
+
+Process finished with exit code 0
+
+```
+
+通过反复测试，我们发现：强制转换为数字型时在输入不为数字的时候无法进行，字符串强制转换为集合、列表、元组时会出现以上情况，任意代码类型强制转换为字符串时完全能正常运行，强制转换为集合时由于其键值对的特殊性质，运行会发生报错,强制转换为布尔型时仅在无任何输入时显示False，其它情况均输出True,强制转换为`None`时会直接报错
 
 >  **注意**：能否强制转换类型可以用人的逻辑思维来判断，python会非常聪明的识别是否能进行转换，这个过程与人的思维类似
 
