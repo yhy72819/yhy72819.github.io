@@ -286,6 +286,8 @@ Process finished with exit code 0
 3. 任意数据类型：同列表
 
 > 注意：当你同时给一个变量赋多个值的时候，输出结果即为元组
+>
+> 同时，当元组内只有一个元素时，一定要加上`,`,不然不会被认为是元组而是其元素本身的类型
 
 ```python
 u = 1,2,3
@@ -392,6 +394,39 @@ Process finished with exit code 0
 
 大括号包含的，存在键值对的内容就是dictionary
 
+注意，强制转换时：可以用一下方式来创造字典：
+
+```python
+d1 = dict(a = 1,b = 2)
+print(d1)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+{'a': 1, 'b': 2}
+
+Process finished with exit code 0
+
+```
+
+不用强制转换时也可以这样生成：
+```python
+d1 = {x:x**2 for x in range (2,16)}
+print(d1)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+{2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81, 10: 100, 11: 121, 12: 144, 13: 169, 14: 196, 15: 225}
+
+Process finished with exit code 0
+```
+```
+
 ### 6.1 字典演示
 
 ```python
@@ -423,10 +458,33 @@ Process finished with exit code 0
     1. 不可变的数据类型，才能当字典的 key(数字，字符串，元组，布尔，frozenset)
 4. value：任意数据类型，Python所拥有的数据类型
 5. 可变性：可以添加、修改、删除键值对
+6. 不可比较性：字典只要比较大小就会报错
+7. 无法使用索引提取内部元素，会直接报错，但可以通过指定其key来输出其对应的value                                              ，                                                                                                                                                                                                                                                                                                                                                                                              
+
+> **注意**：当字典中出现重复的key时，字典会让索引最大的那个重复key覆盖所有重复key，在输出时自动消除这些key,并将那个覆盖的key的位置放到索引最小的那个重复key的位置
+>
+> ```python
+> d1 = {3:1,1:3,2:3,1:5,1:2}
+> print(d1)
+> ```
+>
+> 结果为：
+>
+> ```python
+> /Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+> {3: 1, 1: 2, 2: 3}
+> 
+> Process finished with exit code 0
+> 
+> ```
+>
+> `popitem()` 是 Python 字典的一个方法，它用于弹出并删除字典中的一个键值对，然后将其作为元组 `(key, value)` 返回。在 Python 3.7 及更高版本中，它删除并返回**最后插入的**键值对；而在 Python 3.7 之前的版本中，它会删除并返回一个**随机的**键值对。如果字典为空时调用此方法，会引发 `KeyError` 异常
 
 ## 7. 集合
 
 大括号包含的，无键值对的就是集合
+
+注意：空集合是`set()`,而`{}`是空字典
 
 ### 7.1 集合演示
 

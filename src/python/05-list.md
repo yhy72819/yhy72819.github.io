@@ -259,6 +259,31 @@ Process finished with exit code 0
 
 ```
 
+注意：有一个经典错误：
+即：
+
+```python
+a = [1,2,3,4]
+b = a[0]
+b = 100
+print(a)
+```
+
+结果为：
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/07.py 
+[1, 2, 3, 4]
+
+Process finished with exit code 0
+
+```
+
+a 未收到影响，
+
+原因涉及到赋值的性质，即后赋值的过程会覆盖之前赋值的过程，也就是说：
+
+当 令`b = 100`时这段代码覆盖了之前的`b = a[0]`，也就是说，当b = 100时，b 就不等于 a[0]了，故b不会影响a
+
 ### 7.2 修改多个元素
 
 1. 修改前后索引长度相同：
@@ -687,6 +712,8 @@ python 提供了多种方式对列表进行排序，常见的有`list.sort()`和
 - `list.sort()`:原地排序，会直接修改调用该方法的列表本身，不会返回新列表。
 - `sorted(irerable)`:非原地排序，会新建一个列表，并返回排序后的结果，原列表或可迭代对象不变
 
+### 15.1sort
+
 ```python
 numbers = [2,1,4,3,7,6,5,0,9,8]
 numbers.sort()
@@ -708,7 +735,141 @@ Process finished with exit code 0
 
 ```
 
-## 16. 小试牛刀
+### 15.2 sorted(list, reverse=False)
+
+Sorted(list,reverse=False)函数可以传入任意可迭代对象，将可迭代对象进行升序排序，然后返回一个新的，排序好的列表，原列表不变，`reverse`默认False，如果设置为 True 则返回降序排序。
+
+示例：1
+
+```python
+lst = [9,8,10,7,6,5,4,3,2,1,0]
+new_lst = sorted(lst)
+print(new_lst)
+
+lst = [9,8,10,7,6,5,4,3,2,1,0]
+new_lst = sorted(lst,reverse = True)
+print(new_lst)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/05.py 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+[10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+
+Process finished with exit code 0
+
+```
+
+```python
+# 数字 (int,float)
+# 直接从小到大（默认）或从大到小（reverse = True）排序
+numbers = [5,2,9,1,5,6]
+numbers.sort()
+print(numbers)
+
+# 按绝对值排序
+numbers = [-10,5,-30,20]
+numbers.sort(key = abs)
+print(numbers) #输出：[5,-10,20,-30]
+```
+
+如上为数字型绝对值排序的方法
+
+```python
+# 字符串（str）
+# todo：按 字母顺序（ASCII 顺序）排序，其实也就是按照字母表顺序，默认区分大小写（大写字母排在小写字母的前面）
+words = ['banana','apple','cherry','C-chair','A-chair']
+words.sort()
+print(words)
+```
+
+ASCII 常用对照表详见：
+
+https://bornforthis.cn/posts/29.html
+
+那能不能忽略大小写呢
+
+可以：
+```python
+# 字符串（str）
+# todo：按 字母顺序（ASCII 顺序）排序，其实也就是按照字母表顺序，默认区分大小写（大写字母排在小写字母的前面）
+words = ['banana','apple','cherry','C-chair','A-chair']
+words.sort(key=str.lower)
+print(words)
+```
+
+那能不能根据字符串的长度排序呢
+
+也可以：
+
+```python
+# 字符串（str）
+# todo：按 字母顺序（ASCII 顺序）排序，其实也就是按照字母表顺序，默认区分大小写（大写字母排在小写字母的前面）
+words = ['banana','apple','cherry','C-chair','A-chair']
+words.sort(key=len)
+print(words)
+```
+
+布尔值之间的比较：
+
+```python
+# todo: 布尔值(bool)
+# False 视为 0 ，True 视为 1，因此 False 会排在 True 前。
+values = [True,False,True,False]
+values.sort()
+print(values)
+print(True < 2)
+```
+
+结果为：
+
+```python
+/Users/yhy/Coder/.venv/bin/python /Users/yhy/Coder/experiment/05.py 
+[False, False, True, True]
+True
+
+Process finished with exit code 0
+
+```
+
+我们知道，一般比较是先比较第一个元素以此类推，有没有办法使其直接比较后续的大小呢
+
+有的：
+
+```python
+# todo:列表之中的元组 按 第二个元素排序
+tuples = [(3,'apple'),(1,'banana'),(2,'cherry')]
+tuples.sort(key = lambda x:x[1])
+print(tuples)
+```
+
+通过使用`lambda`即可赋予其特殊的比较方式
+
+```python
+words = ['banana','apple','cherry','C-chair','A-Chair']
+sorted_words = sorted(words)
+print(sorted_words)
+
+words = ['banana','apple','cherry','C-chair','A-Chair']
+sorted_words = sorted(words,key =str.lower)
+print((sorted_words))# 输出['A-chair','apple','banana','C-chair','cherry'
+
+words = ['banana','apple','cherry','C-chair','A-Chair']
+sorted_words = sorted(words,key = len)
+print(sorted_words) # 输出：['apple','banana','cherry']
+```
+
+即便无视大小写，同字母大写仍然靠前
+
+### 15.3 sort与sorted的区别
+
+无论sorted作用于什么上，都返回列表
+
+![56525860ab6d3af4e7ee342a8f1a8028](./05-list.assets/56525860ab6d3af4e7ee342a8f1a8028.png)
+
+## 16.小试牛刀
 
 ![575cc3012f9dc3b1498f5706d8e4a883](./05-list.assets/575cc3012f9dc3b1498f5706d8e4a883.png)
 
