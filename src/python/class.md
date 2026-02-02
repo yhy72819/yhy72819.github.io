@@ -165,3 +165,65 @@ python protected 的特殊性：可在类外部调用
 ![image-20251120195416417](./class.assets/image-20251120195416417.png)
 
 ![image-20251120195210456](./class.assets/image-20251120195210456.png)
+
+## 2.
+
+面向对象中的**类方法**是指直接在类上定义并调用的方法，而不是在类的实例上调用。与实例方法（需要通过 `self` 访问实例变量）不同，类方法通常使用 `@classmethod` 装饰器（在 Python 中），并将第一个参数绑定到类本身（通常命名为 `cls`），用于操作类变量或执行不需要访问实例属性的操作。 
+
+主要特点
+
+- **绑定到类：** 类方法属于类本身，而不是类的任何特定实例。
+- **第一个参数为类：** 在 Python 中，类方法将第一个参数自动绑定到类本身，通常使用 `cls` 作为参数名，这允许方法访问和修改类变量。
+- **不依赖于实例状态：** 类方法不使用实例变量（即 `self`），因此它不需要访问对象的特定状态。
+- **用于工厂方法和类变量操作：** 它们经常用于创建类的替代构造函数（工厂方法），或者用于操作类变量。 
+
+与实例方法的区别
+
+| 特性           | 类方法 (`@classmethod`)                                      | 实例方法 (`self`)                                            |
+| :------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
+| **调用对象**   | 直接通过类名调用，例如 `ClassName.class_method()`            | 通过类的实例调用，例如 `instance.instance_method()`          |
+| **第一个参数** | 自动绑定到类本身，参数名为 `cls`                             | 自动绑定到类的实例，参数名为 `self`                          |
+| **访问权限**   | 只能访问类变量和静态变量，不能访问实例变量                   | 可以访问类变量、实例变量和静态变量                           |
+| **调用权限**   | 一般可以调用静态或实例方法及其自身                           | 一般只调用静态或其自身，不常见调用类方法的情况，因为需要手动传递self变量 |
+| **调用方式**   | 以MyClass作为类为例，无需输入`myclass = MyClass()`只需输入`MyClass.某个类方法()`即可调用 | 必须输入`myclass = MyClass()`才能进行调用                    |
+
+示例（以 Python 为例）
+
+```python
+class MyClass:
+    class_variable = "我是类变量"
+
+    def __init__(self, instance_var):
+        self.instance_var = instance_var
+
+    # 实例方法
+    def instance_method(self):
+        print(f"调用实例方法，访问实例变量：{self.instance_var}，访问类变量：{self.class_variable}")
+
+    # 类方法
+    @classmethod
+    def class_method(cls):
+        print(f"调用类方法，访问类变量：{cls.class_variable}")
+        # 无法访问实例变量 self.instance_var
+
+    # 类方法作为工厂方法
+    @classmethod
+    def from_string(cls, data_string):
+        # 假设 data_string 包含一个实例变量的值
+        instance_var_value = data_string.split("-")[0]
+        return cls(instance_var_value)
+
+# 调用类方法
+MyClass.class_method()
+
+# 创建实例
+obj = MyClass("我是实例变量")
+# 调用实例方法
+obj.instance_method()
+
+# 使用工厂方法创建实例
+obj_from_string = MyClass.from_string("Hello-World")
+obj_from_string.instance_method()
+
+```
+
